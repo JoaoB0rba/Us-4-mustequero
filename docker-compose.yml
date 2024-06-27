@@ -9,3 +9,11 @@ services:
       - MARIADB_ROOT_PASSWORD=123
     ports:
       - 3307:3306
+  php:
+    build: .
+    container_name: "php"
+    image: php:8.1.16-apache
+    volumes:
+      - ./codigo/:var/www/html
+    ports:
+      - 8080:80
