@@ -13,6 +13,8 @@ $sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_
 
 mysqli_query($conexao, $sql);
 
+header("location: index.html")
+
 ?>
 
 
