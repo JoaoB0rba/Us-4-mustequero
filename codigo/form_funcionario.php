@@ -9,7 +9,7 @@ $telefone_funcionario = $_GET['telefone_funcionario'];
 
 
 
-$sql = "INSERT INTO tb_pagamento (nome_funcionario, cpf_funcionario, telefone_funcionar VALUES ('nome_funcionario', '$cpf_funcionario', '$telefone_funcionario')";
+$sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_funcionario) VALUES ('$nome_funcionario', '$cpf_funcionario', '$telefone_funcionario')";
 
 mysqli_query($conexao, $sql);
 
