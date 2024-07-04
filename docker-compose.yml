@@ -17,3 +17,10 @@ services:
       - ./codigo/:/var/www/html/
     ports:
       - 8080:80
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: "adm_mercadinho"
+    restart: always
+    ports: 
+          - 81:8080
