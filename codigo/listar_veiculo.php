@@ -34,7 +34,7 @@
                 $marca_veiculo = $linha['marca_veiculo'];
                 $cor_veiculo = $linha['cor_veiculo'];
                 $placa_veiculo = $linha['placa_veiculo'];
-                $alugado_veiculo = $linha['situacao_veiculo'];
+                $alugado_veiculo = $linha['alugado_veiculo'];
 
                 echo "<tr>";
                 echo "<td>$modelo_veiculo</td>";
