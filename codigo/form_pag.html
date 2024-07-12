@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleção de Tipo de Pessoa</title>
-    <link rel="stylesheet" href="">
+    <title>Seleção de Tipo de Cliente</title>
 </head>
+
 <body>
-    <form action="processa_form.php" method="get">
-        Qual o tipo de pessoa:<br>
-        <label>
-            <input type="radio" name="tipo_pessoa" value="F" checked>
-            Pessoa Física
-        </label>
-        <br>
-        <label>
-            <input type="radio" name="tipo_pessoa" value="J">
-            Pessoa Jurídica
-        </label><br><br>
-        <input type="submit" value="Salvar">
+    <h1>Seleção de Tipo de Cliente</h1>
+
+    <form action="tipo_pessoa.php" method="get">
+        <label for="documento">CPF ou CNPJ:</label>
+        <input type="text" id="documento" name="documento">
+        <br><br>
+
+        <input type="submit" value="Selecionar">
     </form>
+
 </body>
+
 </html>
