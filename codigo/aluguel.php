@@ -1,6 +1,7 @@
 <?php
     require_once 'conexao.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +33,9 @@
             ?>
         </select>
         <br><br>
-        Pessoa: <br>
+<!--         Pessoa: <br>
         <select name="pessoa_aluguel">
-            <?php
+            ?php
             $sql_pessoa = "SELECT * FROM tb_pessoas";
             $resultados_pessoa = mysqli_query($conexao, $sql_pessoa);
 
@@ -51,30 +52,31 @@
             } else {
                 echo "<option value=''>Erro ao consultar pessoas</option>";
             }
-            ?>
+            ?> -->
         </select>
         <br><br>
         Veículo: <br>
-        <select name="veiculo_aluguel">
-            <?php
-            $sql_veiculo = "SELECT * FROM tb_veiculo";
-            $resultados_veiculo = mysqli_query($conexao, $sql_veiculo);
+        <select name="veiculo_aluguel[]" multiple>
+    <?php
+    $sql_veiculo = "SELECT * FROM tb_veiculo WHERE alugado_veiculo = 'N'";
+    $resultados_veiculo = mysqli_query($conexao, $sql_veiculo);
 
-            if ($resultados_veiculo) {
-                if (mysqli_num_rows($resultados_veiculo) > 0) {
-                    while ($linha_veiculo = mysqli_fetch_array($resultados_veiculo)) {
-                        $idtb_veiculo = $linha_veiculo['idtb_veiculo'];
-                        $modelo_veiculo = $linha_veiculo['modelo_veiculo'];
-                        echo "<option value='$idtb_veiculo'>$modelo_veiculo</option>";
-                    }
-                } else {
-                    echo "<option value=''>Nenhum veículo encontrado</option>";
-                }
-            } else {
-                echo "<option value=''>Erro ao consultar veículos</option>";
+    if ($resultados_veiculo) {
+        if (mysqli_num_rows($resultados_veiculo) > 0) {
+            while ($linha_veiculo = mysqli_fetch_array($resultados_veiculo)) {
+                $idtb_veiculo = $linha_veiculo['idtb_veiculo'];
+                $modelo_veiculo = $linha_veiculo['modelo_veiculo'];
+                echo "<option value='$idtb_veiculo'>$modelo_veiculo</option>";
             }
-            ?>
-        </select>
+        } else {
+            echo "<option value=''>Nenhum veículo disponível para aluguel</option>";
+        }
+    } else {
+        echo "<option value=''>Erro ao consultar veículos</option>";
+    }
+    ?>
+</select>
+
         <br><br>
         <input type="submit" value="Submit">
     </form>
