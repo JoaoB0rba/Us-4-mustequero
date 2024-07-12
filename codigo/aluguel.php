@@ -33,9 +33,9 @@
             ?>
         </select>
         <br><br>
-<!--         Pessoa: <br>
+        Pessoa: <br>
         <select name="pessoa_aluguel">
-            ?php
+            <?php
             $sql_pessoa = "SELECT * FROM tb_pessoas";
             $resultados_pessoa = mysqli_query($conexao, $sql_pessoa);
 
@@ -52,7 +52,7 @@
             } else {
                 echo "<option value=''>Erro ao consultar pessoas</option>";
             }
-            ?> -->
+            ?>
         </select>
         <br><br>
         Veículo: <br>
