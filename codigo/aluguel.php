@@ -78,6 +78,10 @@
 </select>
 
         <br><br>
+
+        <input type="date" name="data_inicial" required><br><br>
+
+
         <input type="submit" value="Submit">
     </form>
 </body>
