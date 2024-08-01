@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Dados do formulário
     $funcionario_aluguel = $_POST['funcionario_aluguel'];
     $pessoa_aluguel = $_POST['pessoa_aluguel']; // ID da pessoa (não é um array)
-    $veiculos_aluguel = $_POST['veiculo_aluguel']; // Array de IDs de veículos
+    $veiculos_aluguel = $_POST['veiculos_aluguel']; // Array de IDs de veículos
     $data_inicial = $_POST['data_inicial']; // Data inicial do aluguel
 
     // Insere um novo registro na tabela tb_aluguel
