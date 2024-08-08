@@ -1,6 +1,7 @@
 <?php
 
 require_once "conexao.php";
+require_once "operacoes.php";
 
 $marca_veiculo = $_GET['marca_veiculo'];
 $placa_veiculo = $_GET['placa_veiculo'];
@@ -14,11 +15,7 @@ $alugado_veiculo = $_GET['alugado_veiculo'];
 $km_inicial_veiculo = $_GET['km_inicial_veiculo'];
 
 
-
-
-$sql = "INSERT INTO tb_veiculo (marca_veiculo, placa_veiculo, modelo_veiculo, numero_chaci_veiculo, tipo_veiculo, cor_veiculo, capacidade_veiculo, porta_mala_veiculo, alugado_veiculo, km_inicial_veiculo) VALUES ('$marca_veiculo', '$placa_veiculo', '$modelo_veiculo', '$numero_chaci_veiculo', '$tipo_veiculo', '$cor_veiculo', '$capacidade_veiculo', '$porta_mala_veiculo', '$alugado_veiculo', '$km_inicial_veiculo')";
-
-mysqli_query($conexao, $sql);
+salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo, $chaci_veiculo, $tipo_veiculo, $cor_veiculo, $capacidade_veiculo, $porta_mala, $alugado_veiculo, $km_inicial_veiculo, $valor_veiculo);
 
 header("location: index.html")
 
