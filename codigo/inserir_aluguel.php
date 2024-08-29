@@ -6,14 +6,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Dados do formulário
     $funcionario_aluguel = $_POST['funcionario_aluguel'];
     $pessoa_aluguel = $_POST['pessoa_aluguel']; // ID da pessoa (não é um array)
-    $veiculos_aluguel = $_POST['veiculos_aluguel']; // Array de IDs de veículos
+    $veiculos_aluguel = $_POST['veiculo_aluguel']; // Array de IDs de veículos
     $data_inicial = $_POST['data_inicial']; // Data inicial do aluguel
+    $pessoa_aluguel = $_POST['pessoa_aluguel']; 
+
 
     // Insere um novo registro na tabela tb_aluguel
-    $sql_aluguel = "INSERT INTO tb_aluguel (data_inicial, tb_pagamento_idtb_pagamento, tb_funcionario_idtb_funcionario)
-                    VALUES ('$data_inicial', 1, $funcionario_aluguel)";
+    $sql_aluguel = "INSERT INTO tb_aluguel (data_inicial, tb_funcionario_idtb_funcionario, tb_pagamento_idtb_pagamento, tb_pessoas_idpessoas)
+                    VALUES ('$data_inicial', $funcionario_aluguel, 1,$pessoa_aluguel)";
     
-    if (mysqli_query($conexao, $sql_aluguel)) {
+    if (mysqli_query($conexao, $sql_aluguel)) { 
         // Obtém o ID do último aluguel inserido
         $id_aluguel = mysqli_insert_id($conexao);
 
