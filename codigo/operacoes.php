@@ -41,7 +41,7 @@ function salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo
     
 }
 
-function salvarPJ($conexao, $cnpj)
+function salvarfuncionario($conexao, $nome_funcionario, $cpf_funcionario, $telefone_funcionario)
 {
     $sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_funcionario) VALUES (?, ?, ?)";
 
@@ -65,6 +65,23 @@ function salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone)
     $stmt = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($stmt, "ssi", $cpf, $cnh, $idPessoa);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+    
+}
+
+function salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone)
+{
+
+    $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
+
+    $sql = "INSERT INTO tb_pessoa_juridica (cnpj, tb_pessoas_idpessoas) VALUES (?, ?)";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "si", $cnpj, $idPessoa);
 
     mysqli_stmt_execute($stmt);
 

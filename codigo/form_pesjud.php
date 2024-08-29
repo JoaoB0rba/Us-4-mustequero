@@ -1,20 +1,15 @@
 <?php
 
 require_once "conexao.php";
+require_once "operacoes.php";
 
 $nome = $_GET['nome'];
-$tipo = $_GET['tipo'];
 $telefone = $_GET['telefone'];
 $cnpj = $_GET['cnpj'];
 
+$tipo = 'pj';
 
-$sql = "INSERT INTO tb_pessoas (nome, tipo, telefone) VALUES ('$nome', '$tipo', '$telefone')";
-mysqli_query($conexao, $sql);
-
-$idpessoas = mysqli_insert_id($conexao);
-
-$sql = "INSERT INTO tb_pessoa_juridica (cnpj, tb_pessoas_idpessoas) VALUES ('$cnpj', $idpessoas)";
-mysqli_query($conexao, $sql);
+salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone);
 
 header("location: index.html")
 ?>
