@@ -85,11 +85,11 @@ function salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo
 
 function salvarPJ($conexao, $cnpj)
 {
-    $sql = "INSERT INTO tb_pessoa_juridica (cnpj) VALUES (?)";
+    $sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_funcionario) VALUES (?, ?, ?)";
 
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "s", $cnpj);
+    mysqli_stmt_bind_param($stmt, "sss", $nome_funcionario, $cpf_funcionario, $telefone_funcionario);
 
     mysqli_stmt_execute($stmt);
 
