@@ -26,11 +26,11 @@ function salvarFuncionario($conexao, $nome, $cpf, $telefone) {
     return $id;
 }
 
-function salvarVeiculo($conexao, $marca, $placa, $modelo, $numero_chaci, $tipo, $cor, $capacidade, $porta_mala, $alugado) {
-    $sql = "INSERT INTO tb_veiculo (marca_veiculo, placa_veiculo, modelo_veiculo, numero_chaci_veiculo, tipo_veiculo, cor_veiculo, capacidade_veiculo, porta_mala_veiculo, alugado_veiculo ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+function salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo, $numero_chaci_veiculo, $tipo_veiculo, $cor_veiculo, $capacidade_veiculo, $porta_mala_veiculo, $alugado_veiculo) {
+    $sql = "INSERT INTO tb_veiculo (marca_veiculo, placa_veiculo, modelo_veiculo, numero_chaci_veiculo, tipo_veiculo, cor_veiculo, capacidade_veiculo, porta_mala_veiculo, alugado_veiculo ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ssssssssss", $marca, $placa, $modelo, $numero_chaci, $tipo, $cor, $capacidade, $porta_mala, $alugado);
+    mysqli_stmt_bind_param($stmt, "sssssssss", $marca_veiculo, $placa_veiculo, $modelo_veiculo, $numero_chaci_veiculo, $tipo_veiculo, $cor_veiculo, $capacidade_veiculo, $porta_mala_veiculo, $alugado_veiculo);
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
@@ -39,7 +39,7 @@ function salvarVeiculo($conexao, $marca, $placa, $modelo, $numero_chaci, $tipo, 
     return $id;
 }
 
-falta arrumar aluguel;
+// falta arrumar aluguel;
 function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {
     $sql = "INSERT INTO tb_aluguel (idfuncionario, idcliente) VALUES (?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
