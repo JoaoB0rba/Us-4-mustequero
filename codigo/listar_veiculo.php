@@ -23,8 +23,7 @@
             <td>Capacidade</td>
             <td>Porta Mala</td>
             <td>Alugado</td>
-            <td>Km Inicial</td>
-
+           
 
 
 
@@ -47,7 +46,7 @@
             echo "<td>$carro[7]</td>";
             echo "<td>$carro[8]</td>";
             echo "<td>$carro[9]</td>";
-            echo "<td>$carro[10]</td>";
+            
 
             echo "</tr>";
         }

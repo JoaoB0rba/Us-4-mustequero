@@ -1,16 +1,56 @@
 <?php
 
-function salvarCliente($conexao, $nome) {
-    $sql = "INSERT INTO cliente (nome) VALUES (?)";
+function salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone)
+{
+
+    $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
+
+    $sql = "INSERT INTO tb_pessoa_fisica (cpf, cnh, tb_pessoas_idpessoas) VALUES (?, ?, ?)";
+
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "s", $nome);
+    mysqli_stmt_bind_param($stmt, "ssi", $cpf, $cnh, $idPessoa);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+}
+
+function salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone)
+{
+
+    $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
+
+    $sql = "INSERT INTO tb_pessoa_juridica (cnpj, tb_pessoas_idpessoas) VALUES (?, ?)";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "si", $cnpj, $idPessoa);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+}
+
+
+function salvarpessoa($conexao, $nome, $tipo, $telefone)
+{
+    $sql = "INSERT INTO tb_pessoas (nome, tipo, telefone) VALUES (?, ?, ?)";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "sss", $nome, $tipo, $telefone);
+
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
+
     mysqli_stmt_close($stmt);
 
     return $id;
+
 }
 
 function salvarFuncionario($conexao, $nome, $cpf, $telefone) {
@@ -120,5 +160,30 @@ function atualiza_km_atual($conexao, $km_atual, $idveiculo) {
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
+}
+
+function listarCarros($conexao)
+{
+    $sql = "SELECT * FROM tb_veiculo";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $idtb_veiculo, $marca_veiculo, $placa_veiculo, $modelo_veiculo,$numero_chaci_veiculo,$tipo_veiculo,$cor_veiculo,$capacidade_veiculo,$porta_mala_veiculo,$alugado_veiculo);
+
+    mysqli_stmt_store_result($stmt);
+
+    $lista = [];
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        while (mysqli_stmt_fetch($stmt)) {
+
+            $lista[] = [$idtb_veiculo, $marca_veiculo, $placa_veiculo, $modelo_veiculo,$numero_chaci_veiculo,$tipo_veiculo,$cor_veiculo,$capacidade_veiculo,$porta_mala_veiculo,$alugado_veiculo];
+        }
+    }
+
+    mysqli_stmt_close($stmt);
+
+    return $lista;
 }
 ?>
