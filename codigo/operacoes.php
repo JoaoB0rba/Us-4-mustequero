@@ -1,16 +1,56 @@
 <?php
 
-function salvarCliente($conexao, $nome) {
-    $sql = "INSERT INTO cliente (nome) VALUES (?)";
+function salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone)
+{
+
+    $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
+
+    $sql = "INSERT INTO tb_pessoa_fisica (cpf, cnh, tb_pessoas_idpessoas) VALUES (?, ?, ?)";
+
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "s", $nome);
+    mysqli_stmt_bind_param($stmt, "ssi", $cpf, $cnh, $idPessoa);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+}
+
+function salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone)
+{
+
+    $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
+
+    $sql = "INSERT INTO tb_pessoa_juridica (cnpj, tb_pessoas_idpessoas) VALUES (?, ?)";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "si", $cnpj, $idPessoa);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+}
+
+
+function salvarpessoa($conexao, $nome, $tipo, $telefone)
+{
+    $sql = "INSERT INTO tb_pessoas (nome, tipo, telefone) VALUES (?, ?, ?)";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "sss", $nome, $tipo, $telefone);
+
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
+
     mysqli_stmt_close($stmt);
 
     return $id;
+
 }
 
 function salvarFuncionario($conexao, $nome, $cpf, $telefone) {
@@ -39,7 +79,7 @@ function salvarVeiculo($conexao, $marca, $placa, $modelo, $numero_chaci, $tipo, 
     return $id;
 }
 
-falta arrumar aluguel;
+// falta arrumar aluguel;
 function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {
     $sql = "INSERT INTO tb_aluguel (idfuncionario, idcliente) VALUES (?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
