@@ -1,6 +1,6 @@
 <?php
 require_once 'conexao.php';
-
+require_once 'operacoes.php';
 // Verifica se o formulário foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Dados do formulário
@@ -14,15 +14,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insere um novo registro na tabela tb_aluguel
     $sql_aluguel = "INSERT INTO tb_aluguel (data_inicial, tb_funcionario_idtb_funcionario, tb_pagamento_idtb_pagamento, tb_pessoas_idpessoas)
                     VALUES ('$data_inicial', $funcionario_aluguel, 1,$pessoa_aluguel)";
-    
+   
     if (mysqli_query($conexao, $sql_aluguel)) { 
         // Obtém o ID do último aluguel inserido
         $id_aluguel = mysqli_insert_id($conexao);
 
         // Insere os registros na tabela de relacionamento tb_aluguel_has_tb_veiculo
-        foreach ($veiculos_aluguel as $id_veiculo) {
-            $sql_relacionamento_veiculo = "INSERT INTO tb_aluguel_has_tb_veiculo (tb_aluguel_idtb_aluguel, tb_veiculo_idtb_veiculo)
-                                           VALUES ($id_aluguel, $id_veiculo)";
+       
+         $kminicial =  kmInicialVeiculo($conexao, $veiculos_aluguel);
+         $kmfinal = 0;
+        foreach ($veiculos_aluguel as $veiculos_aluguel) {
+            $sql_relacionamento_veiculo = "INSERT INTO tb_aluguel_has_tb_veiculo (tb_aluguel_idtb_aluguel, tb_veiculo_idtb_veiculo, kmfinal, kminicial) VALUES ($tb_aluguel_idtb_aluguel, $tb_veiculo_idtb_veiculo, $kmfinal, $kminicial)";
             mysqli_query($conexao, $sql_relacionamento_veiculo);
         }
 
