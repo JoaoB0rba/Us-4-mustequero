@@ -79,7 +79,25 @@ function salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo
 }
 
 
-// // falta arrumar aluguel;
+function listarCarros($conexao)
+ {
+     $sql = "SELECT * FROM tb_veiculo";
+     $stmt = mysqli_prepare($conexao, $sql);
+     mysqli_stmt_execute($stmt);
+     mysqli_stmt_bind_result($stmt, $idtb_veiculo, $marca_veiculo, $placa_veiculo, $modelo_veiculo,$numero_chaci_veiculo,          $tipo_veiculo,$cor_veiculo,$capacidade_veiculo,$porta_mala_veiculo,$alugado_veiculo);
+     mysqli_stmt_store_result($stmt);
+     $lista = [];
+     if (mysqli_stmt_num_rows($stmt) > 0) {
+         while (mysqli_stmt_fetch($stmt)) {
+             $lista[] = [$idtb_veiculo, $marca_veiculo, $placa_veiculo, $modelo_veiculo,$numero_chaci_veiculo,$tipo_veiculo,$cor_veiculo,$capacidade_veiculo,$porta_mala_veiculo,$alugado_veiculo];
+        }
+    }
+    mysqli_stmt_close($stmt);
+    return $lista;
+}
+
+
+// // falta arrumar aluguel e o pagamento ;
 
 function salvarAluguel($conexao, $idfuncionario, $idcliente) {
     $sql = "INSERT INTO emprestimo (idfuncionario, idcliente) VALUES (?, ?)";
@@ -162,4 +180,5 @@ function atualiza_km_atual($conexao, $km_atual, $idveiculo) {
 
     mysqli_stmt_close($stmt);
 }
+
  ?>
