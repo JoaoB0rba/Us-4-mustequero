@@ -117,10 +117,10 @@ function salvarVeiculoEmprestimo($conexao, $idemprestimo, $idveiculo) {
     $km_inicial = kmInicialVeiculo($conexao, $idveiculo);
     $km_final = 0;
 
-    $sql = "INSERT INTO emprestimo_has_veiculo (idemprestimo, idveiculo, km_inicial, km_final) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_aluguel_has_tb_veiculo (tb_aluguel_idtb_aluguel, tb_veiculo_idtb_veiculo, kmfinal, kminicial) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "iiss", $idemprestimo, $idveiculo, $km_inicial, $km_final);
+    mysqli_stmt_bind_param($stmt, "iiss", $tb_aluguel_idtb_aluguel, $tb_veiculo_idtb_veiculo, $kmfinal, $kminicial);
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
@@ -130,7 +130,7 @@ function salvarVeiculoEmprestimo($conexao, $idemprestimo, $idveiculo) {
 }
 
 function kmInicialVeiculo($conexao, $idveiculo) {
-    $sql = "SELECT km_atual FROM veiculo WHERE idveiculo = ?";
+    $sql = "SELECT km_atual FROM tb_veiculo WHERE idtb_veiculo = ?";
     $stmt = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($stmt, 'i', $idveiculo);
@@ -181,11 +181,11 @@ function atualiza_km_atual($conexao, $km_atual, $idveiculo) {
     mysqli_stmt_close($stmt);
 }
 
-function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {
-    $sql = "INSERT INTO emprestimo (idfuncionario, idcliente) VALUES (?, ?)";
+function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {   
+    $sql = "INSERT INTO tb_aluguel (data_inicial,tb_funcionario_idtb_funcionario, tb_pessoas_idpessoas) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ii", $idfuncionario, $idcliente);
+    mysqli_stmt_bind_param($stmt, "sii",$data_inicial, $tb_funcionario_idtb_funcionario, $tb_pessoas_idpessoas);
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
