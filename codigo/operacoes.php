@@ -143,11 +143,11 @@ function kmInicialVeiculo($conexao, $idveiculo) {
     return $km;
 }
 
-function efetuarPagamento($conexao, $idemprestimo, $valor, $precokm, $metodo) {
-    $sql = "INSERT INTO pagamento (idemprestimo, valor, preco_por_km, metodo) VALUES (?, ?, ?, ?)";
+function efetuarPagamento($conexao, $tipo, $preco_pagamento, $valor_valorkm, $tb_aluguel_idtb_aluguel) {
+    $sql = "INSERT INTO tb_pagamento (tipo, preco_pagamento, valor_valorkm, tb_aluguel_idtb_aluguel) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "idds", $idemprestimo, $valor, $precokm, $metodo);
+    mysqli_stmt_bind_param($stmt, "idds", $tipo, $preco, $preco_pagamento, $tb_aluguel_idtb_aluguel);
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
@@ -179,6 +179,19 @@ function atualiza_km_atual($conexao, $km_atual, $idveiculo) {
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
+}
+
+function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {
+    $sql = "INSERT INTO emprestimo (idfuncionario, idcliente) VALUES (?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "ii", $idfuncionario, $idcliente);
+    mysqli_stmt_execute($stmt);
+
+    $id = mysqli_stmt_insert_id($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $id;
 }
 
  ?>
