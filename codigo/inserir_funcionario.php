@@ -14,8 +14,3 @@ salvarFuncionario($conexao, $nome_funcionario, $cpf_funcionario, $telefone_funci
 header("location: index.html")
 
 ?>
-
-
-
-
-

@@ -12,15 +12,7 @@ require_once "operacoes.php";
 <body>
     
 
-
-
-
-
-
-
-
-
-<form action="">
+<form action="inserir_aluguel.php">
 
     <input type="text" name="cliente">
     <input type="text" name="funcionario">
@@ -28,23 +20,6 @@ require_once "operacoes.php";
     <input type="submit" value="enviar">
 
     </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

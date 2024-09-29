@@ -1,27 +1,36 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <form action="inserir_veiculo.php" method="get">
+        Marca: <br>
+        <input type="text" name="marca_veiculo"> <br><br>
+        Placa:
+        <input type="text" name="placa_veiculo"> <br><br>
+        Modelo:
+        <input type="text" name="modelo_veiculo"> <br><br>
+        Numero do Chaci:
+        <input type="text" name="chaci_veiculo"> <br><br>
+        Tipo de Veiculo:
+        <input type="text" name="tipo_veiculo"> <br><br>
+        Cor:
+        <input type="text" name="cor_veiculo"><br><br>
+        Capacidade:
+        <input type="text" name="capacidade_veiculo"> <br><br>
+        Porta-Mala:
+        <input type="text" name="porta_mala"> <br><br>
+        Situação:
+        <input type="text" name="alugado_veiculo"> <br><br>
+        Km atual:
+        <input type="text" name="km_atual"> <br><br>
 
-require_once "conexao.php";
-require_once "operacoes.php";
-
-$marca_veiculo = $_GET['marca_veiculo'];
-$placa_veiculo = $_GET['placa_veiculo'];
-$modelo_veiculo = $_GET['modelo_veiculo'];
-$numero_chaci_veiculo = $_GET['chaci_veiculo'];
-$tipo_veiculo = $_GET['tipo_veiculo'];
-$cor_veiculo = $_GET['cor_veiculo'];
-$capacidade_veiculo = $_GET['capacidade_veiculo'];
-$porta_mala_veiculo = $_GET['porta_mala'];
-$alugado_veiculo = $_GET['alugado_veiculo'];
-
-
-salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo, $numero_chaci_veiculo, $tipo_veiculo, $cor_veiculo, $capacidade_veiculo, $porta_mala_veiculo, $alugado_veiculo);
-
-header("location: index.html")
-
-
-?>
-
-
-
-
-
+        
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>
