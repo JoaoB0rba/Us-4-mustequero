@@ -12,17 +12,11 @@
 require_once "conexao.php";
 require_once "operacoes.php";
 
-$date = $_GET['date'];
 $idFuncionario = $_GET['idFuncionario'];
 $tipocliente = $_GET['tipocliente'];
 
-// salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone);
-
-// header("location: index.html")
 ?>
-<form action="" method="get">
-
-    <input type="hidden" name="date" value="<?php echo $date; ?>">
+<form action="form_aluguel3.php" method="get">
 
     <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
 
@@ -42,6 +36,7 @@ $tipocliente = $_GET['tipocliente'];
         </select> <br><br>
     
     <br><br>
+    <input type="submit" value="enviar"><br>
 
 
 </form>

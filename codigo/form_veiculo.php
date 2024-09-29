@@ -24,8 +24,13 @@
         <input type="text" name="capacidade_veiculo"> <br><br>
         Porta-Mala:
         <input type="text" name="porta_mala"> <br><br>
-        Situação:
-        <input type="text" name="alugado_veiculo"> <br><br>
+        
+        <!-- Situação:
+        <input type="text" name="alugado_veiculo"> <br><br> -->
+
+        <input type="hidden" name="alugado_veiculo" value="N">
+
+
         Km atual:
         <input type="text" name="km_atual"> <br><br>
 

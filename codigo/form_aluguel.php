@@ -10,9 +10,9 @@
 
 <form action="form_aluguel2.php">
 
-    data:
+    <!-- data:---------nao precisa pq é timestamp
     <input type="date" name="data">
-    <br><br>
+    <br><br> -->
     
     
     funcionario:
@@ -44,6 +44,9 @@
     <input type="submit" value="enviar">
 
     </form>
+    <a href="index.html">
+    <button>Voltar</button>
+</a>
 
 
 

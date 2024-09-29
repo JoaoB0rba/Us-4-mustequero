@@ -229,4 +229,26 @@ function listarCliente($conexao, $tipocliente)
     mysqli_stmt_close($stmt);
     return $lista;
 }
+function listarCarrosN($conexao) {
+    $sql = "SELECT * FROM tb_veiculo WHERE alugado_veiculo = 'N'";
+    $resultado = mysqli_query($conexao, $sql);
+
+    // Verifica se a consulta foi bem-sucedida
+    if (!$resultado) {
+        die("Erro na consulta: " . mysqli_error($conexao));
+    }
+
+    $carros = [];
+    // Percorre os resultados e os armazena em um array
+    while ($carro = mysqli_fetch_assoc($resultado)) {
+        // Adiciona uma verificação para ver se a chave existe
+        if (isset($carro['idtb_veiculo'])) {
+            $carros[] = $carro;
+        }
+    }
+
+    return $carros; // Retorna o array com os carros disponíveis
+}
+
+
 ?>
