@@ -193,4 +193,40 @@ function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {
     return $id;
 }
 
- ?>
+function listarFuncionario($conexao)
+{
+    $sql= "SELECT idtb_funcionario, nome_funcionario FROM tb_funcionario";
+    $stmt= mysqli_prepare($conexao,$sql);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt,$id,$nome);
+    mysqli_stmt_store_result($stmt);
+    $lista = [];
+    if (mysqli_stmt_num_rows($stmt) > 0){
+        while (mysqli_stmt_fetch($stmt)){
+            $lista[]=[$id, $nome];
+        }
+    }
+    mysqli_stmt_close($stmt);
+    return $lista;
+}
+
+function listarCliente($conexao, $tipocliente)
+{
+    // $sql = "SELECT * FROM tb_pessoas WHERE tipo = ?" PERGUNTAR PRO PROFESSOR COMO FAZ DESSE JEITO COM "?";
+
+    $sql = "SELECT idpessoas,nome,telefone FROM tb_pessoas WHERE tipo = '$tipocliente'";
+    
+    $stmt= mysqli_prepare($conexao,$sql);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt,$id,$nome,$telefone);
+    mysqli_stmt_store_result($stmt);
+    $lista = [];
+    if (mysqli_stmt_num_rows($stmt) > 0){
+        while (mysqli_stmt_fetch($stmt)){
+            $lista[]=[$id, $nome,$telefone];
+        }
+    }
+    mysqli_stmt_close($stmt);
+    return $lista;
+}
+?>
