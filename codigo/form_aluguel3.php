@@ -1,3 +1,8 @@
+<?php 
+session_start();
+require_once "conexao.php";
+require_once "operacoes.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,12 +32,6 @@
             </thead>
             <tbody>
                 <?php
-                require_once "conexao.php";
-                require_once "operacoes.php";
-
-                $idFuncionario = $_GET['idFuncionario'];
-                $tipocliente = $_GET['tipocliente'];
-                $cliente = $_GET['cliente'];
 
 
                 
@@ -57,13 +56,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-
-        <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
-
-        <input type="hidden" name="tipocliente" value="<?php echo $tipocliente; ?>">
-
-        <input type="hidden" name="cliente" value="<?php echo $cliente; ?>">
 
 
         <button type="submit">Alugar Carros Selecionados</button>

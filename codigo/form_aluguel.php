@@ -8,7 +8,7 @@
 <body>
     
 
-<form action="form_aluguel2.php">
+<form action="session.php">
 
     <!-- data:---------nao precisa pq é timestamp
     <input type="date" name="data">

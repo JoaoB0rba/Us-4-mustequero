@@ -3,7 +3,7 @@
 
 2- arrumar funcoes pagamento
 
-3- usar session nas transiçoes do form_alugueis pq o input do tipo hidden da errado na hora de voltar pra pagina anterior
+3- usar session nas transiçoes do form_alugueis pq o input do tipo hidden da errado na hora de voltar pra pagina anterior -----ARRUMADO
 
 4-terminar o inserir_aluguel
 

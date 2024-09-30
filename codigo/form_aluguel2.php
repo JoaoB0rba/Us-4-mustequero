@@ -1,3 +1,8 @@
+<?php 
+session_start();
+require_once "conexao.php";
+require_once "operacoes.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,26 +12,12 @@
 </head>
 <body>
 
-<?php
-
-require_once "conexao.php";
-require_once "operacoes.php";
-
-$idFuncionario = $_GET['idFuncionario'];
-$tipocliente = $_GET['tipocliente'];
-
-?>
-<form action="form_aluguel3.php" method="get">
-
-    <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
-
-    <input type="hidden" name="tipocliente" value="<?php echo $tipocliente; ?>">
-
+<form action="session2.php" method="get">
     Cliente:
     <select name="cliente">
             <?php
-
-            $resultados = listarCliente($conexao, $tipocliente);
+            
+            $resultados = listarCliente($conexao, $_SESSION['tipocliente']);
 
             // ------------Arrumar daqui pra baixo
             foreach ($resultados as $cliente) {
