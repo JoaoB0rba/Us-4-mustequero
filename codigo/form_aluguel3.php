@@ -12,7 +12,7 @@ require_once "operacoes.php";
 </head>
 <body>
     <h2>Selecione os Carros para Alugar</h2>
-    <form action="inserir_aluguel.php" method="post">
+    <form action="session3.php" method="post">
         <table border="1">
             <thead>
                 <tr>
@@ -40,7 +40,7 @@ require_once "operacoes.php";
                 
                 foreach ($carrosDisponiveis as $carro): ?>
                 <tr>
-                    <td><input type="checkbox" name="carros[]" value="<?php echo $carro['idtb_veiculo']; ?>"></td>
+                    <td><input type="checkbox" name="carros" value="<?php echo $carro['idtb_veiculo']; ?>"></td>
                     <td><?php echo $carro['idtb_veiculo']; ?></td>
                     <td><?php echo $carro['marca_veiculo']; ?></td>
                     <td><?php echo $carro['placa_veiculo']; ?></td>
