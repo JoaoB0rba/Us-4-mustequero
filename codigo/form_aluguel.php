@@ -10,11 +10,7 @@
 
 <form action="session.php">
 
-    <!-- data:---------nao precisa pq é timestamp
-    <input type="date" name="data">
-    <br><br> -->
-    
-    
+
     funcionario:
     <select name="idFuncionario">
             <?php
@@ -46,34 +42,7 @@
     </form>
     <a href="index.html">
     <button>Voltar</button>
-</a>
+    </a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <php
-$cliente = 1;
-$funcionario = 1;
-$carros = [2, 4];
-// salvar o emprestimo
-$idemprestimo = salvarEmprestimo($conexao, $tb_funcionario_idtb_funcionario, $tb_pessoas_idpessoas);
-// salvar os veiculos
-foreach ($carros as $id) {  
-    salvarVeiculoEmprestimo($conexao, $idemprestimo, $id);
-}
-> -->
 </body>
 </html>

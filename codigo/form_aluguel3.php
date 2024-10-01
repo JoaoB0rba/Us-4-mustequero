@@ -40,7 +40,7 @@ require_once "operacoes.php";
                 
                 foreach ($carrosDisponiveis as $carro): ?>
                 <tr>
-                    <td><input type="checkbox" name="carros" value="<?php echo $carro['idtb_veiculo']; ?>"></td>
+                    <td><input type="checkbox" name="carros[]" value="<?php echo $carro['idtb_veiculo']; ?>"></td>
                     <td><?php echo $carro['idtb_veiculo']; ?></td>
                     <td><?php echo $carro['marca_veiculo']; ?></td>
                     <td><?php echo $carro['placa_veiculo']; ?></td>

@@ -98,49 +98,18 @@ function listarCarros($conexao)
 
 // // falta arrumar aluguel e o pagamento ;
 
-function salvarAluguel($conexao, $idfuncionario, $idcliente) {
-    $sql = "INSERT INTO emprestimo (idfuncionario, idcliente) VALUES (?, ?)";
-    $stmt = mysqli_prepare($conexao, $sql);
+// function salvarAluguel($conexao, $idfuncionario, $idcliente) {
+//     $sql = "INSERT INTO emprestimo (idfuncionario, idcliente) VALUES (?, ?)";
+//     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ii", $idfuncionario, $idcliente);
-    mysqli_stmt_execute($stmt);
+//     mysqli_stmt_bind_param($stmt, "ii", $idfuncionario, $idcliente);
+//     mysqli_stmt_execute($stmt);
 
-    $id = mysqli_stmt_insert_id($stmt);
-    mysqli_stmt_close($stmt);
+//     $id = mysqli_stmt_insert_id($stmt);
+//     mysqli_stmt_close($stmt);
 
-    return $id;
-}
-
-function salvarVeiculoEmprestimo($conexao, $idemprestimo, $idveiculo) {
-
-    $km_inicial = kmInicialVeiculo($conexao, $idveiculo);
-    $km_final = 0;
-
-    $sql = "INSERT INTO tb_aluguel_has_tb_veiculo (tb_aluguel_idtb_aluguel, tb_veiculo_idtb_veiculo, kmfinal, kminicial) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($stmt, "iiss", $tb_aluguel_idtb_aluguel, $tb_veiculo_idtb_veiculo, $kmfinal, $kminicial);
-    mysqli_stmt_execute($stmt);
-
-    $id = mysqli_stmt_insert_id($stmt);
-    mysqli_stmt_close($stmt);
-
-    return $id;
-}
-
-function kmInicialVeiculo($conexao, $idveiculo) {
-    $sql = "SELECT km_atual FROM tb_veiculo WHERE idtb_veiculo = ?";
-    $stmt = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($stmt, 'i', $idveiculo);
-    mysqli_stmt_execute($stmt);
-
-    mysqli_stmt_bind_result($stmt, $km);
-
-    mysqli_stmt_fetch($stmt);
-    mysqli_stmt_close($stmt);
-    return $km;
-}
+//     return $id;
+// }
 
 function efetuarPagamento($conexao, $tipo, $preco_pagamento, $valor_valorkm, $tb_aluguel_idtb_aluguel) {
     $sql = "INSERT INTO tb_pagamento (tipo, preco_pagamento, valor_valorkm, tb_aluguel_idtb_aluguel) VALUES (?, ?, ?, ?)";
@@ -250,5 +219,51 @@ function listarCarrosN($conexao) {
     return $carros; // Retorna o array com os carros disponíveis
 }
 
+// function confiraDados($conexao, $tipocliente, $idFuncionario, $cliente, $carros){
+// }
 
+function salvarAluguel($conexao, $idFuncionario, $cliente) {
+    $dataInicial = date('Y-m-d H:i:s'); // Formato adequado para o timestamp
+    $sql = "INSERT INTO tb_aluguel (data_inicial, tb_funcionario_idtb_funcionario, tb_pessoas_idpessoas) VALUES (?, ?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "sii", $dataInicial, $idFuncionario, $cliente);
+    mysqli_stmt_execute($stmt);
+
+    $id = mysqli_stmt_insert_id($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $id;
+}
+
+function kmInicialVeiculo($conexao, $idveiculo) {
+    $sql = "SELECT km_atual FROM tb_veiculo WHERE idtb_veiculo = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, 'i', $idveiculo);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $km);
+
+    mysqli_stmt_fetch($stmt);
+    mysqli_stmt_close($stmt);
+    return $km;
+}
+
+function salvarVeiculoAluguel($conexao, $idaluguel, $idveiculo) {
+
+    $km_inicial = kmInicialVeiculo($conexao, $idveiculo);
+    $km_final = 0;
+
+    $sql = "INSERT INTO tb_aluguel_has_tb_veiculo (tb_aluguel_idtb_aluguel, tb_veiculo_idtb_veiculo, kmfinal, kminicial) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "iiss", $idaluguel, $idveiculo, $km_final, $km_inicial);
+    mysqli_stmt_execute($stmt);
+
+    $id = mysqli_stmt_insert_id($stmt);
+    mysqli_stmt_close($stmt);
+
+    return $id;
+}
 ?>
