@@ -14,9 +14,12 @@ $idaluguel = $_GET['idaluguel'];
 <body>
     <h2>Lançar pagamento</h2>
     <form action="form_pag5.php" method="POST">
+
         <input type="hidden" name="idaluguel" value="<?php echo $idaluguel; ?>">
+
         Preço por KM: <br>
         <input type="text" name="precokm" required><br>
+
         Método pagamento: <br>
         <select name="tipopag">
             <option value="Dinheiro">Dinheiro</option>
@@ -26,14 +29,14 @@ $idaluguel = $_GET['idaluguel'];
         
         <h4>Carros</h4>
         <hr>
-
         <?php
         $carros = listarVeiculosAluguel($conexao, $idaluguel);
         
         foreach ($carros as $carroAluguel) {
             $veiculo = listarVeiculoPorId($conexao, $carroAluguel[0]);
             $kmInicial = $veiculo[10]; // Supondo que o Km Inicial está no índice 10
-            echo "<input type='checkbox' name='veiculos[]' value='$veiculo[0]'>"; // ID do veículo
+            echo "<br>";
+            echo "Pagar agora:<input type='checkbox' name='veiculos[]' value='$veiculo[0]'>"; // ID do veículo
             echo "<input type='hidden' name='km_inicial[$veiculo[0]]' value='$kmInicial'>"; // Envia o Km Inicial para a próxima página
             echo "<p>Veículo: $veiculo[1] - $veiculo[3]</p>";
             echo "<p>Km Inicial: $kmInicial</p>";
@@ -41,8 +44,6 @@ $idaluguel = $_GET['idaluguel'];
             echo "<hr>";
         }
         ?>
-        Valor total a pagar: <br>
-        <input type="text" name="valor" disabled><br>
         
         <input type="submit" value='Lançar pagamento'>
     </form>
