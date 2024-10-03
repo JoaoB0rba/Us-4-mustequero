@@ -266,4 +266,94 @@ function salvarVeiculoAluguel($conexao, $idaluguel, $idveiculo) {
 
     return $id;
 }
+
+function atualiza_alugado($conexao, $carros) {
+    $sql = "UPDATE tb_veiculo SET alugado_veiculo = 'S' WHERE idtb_veiculo = ?";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    foreach ($carros as $carro) {
+        mysqli_stmt_bind_param($stmt, "i", $carro);
+        mysqli_stmt_execute($stmt);
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function listarAluguelCliente($conexao, $cliente) {
+    $sql = "SELECT * FROM tb_aluguel WHERE tb_pessoas_idpessoas = ?";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "i", $cliente);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_store_result($stmt);
+    mysqli_stmt_bind_result($stmt, $aluguel, $data, $funcionario, $cliente);
+
+    $lista = [];
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        while (mysqli_stmt_fetch($stmt)) {
+          $lista[] = [$aluguel, $data, $funcionario, $cliente];
+        }
+    }
+
+    mysqli_stmt_close($stmt);
+
+    return $lista;
+}
+
+
+function listarVeiculosAluguel($conexao, $idaluguel) {
+    $sql = "SELECT tb_veiculo_idtb_veiculo, kminicial FROM tb_aluguel_has_tb_veiculo WHERE tb_aluguel_idtb_aluguel = ?";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "i", $idaluguel);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_store_result($stmt);
+    mysqli_stmt_bind_result($stmt, $idveiculo, $km_inicial);
+
+    $lista = [];
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        while (mysqli_stmt_fetch($stmt)) {
+          $lista[] = [$idveiculo, $km_inicial];
+        }
+    }
+
+    mysqli_stmt_close($stmt);
+
+    return $lista;
+}
+
+
+
+function listarVeiculoPorId($conexao, $idveiculo)
+{
+    $sql = "SELECT * FROM tb_veiculo WHERE idtb_veiculo = ?";
+
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, 'i', $idveiculo);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $id, $marca, $placa, $modelo, $chaci, $tipo, $cor, $capacidade, $porta_mala, $alugado, $km_atual);
+
+    mysqli_stmt_store_result($stmt);
+
+    $lista = 0;
+    if (mysqli_stmt_num_rows($stmt) > 0) {
+        while (mysqli_stmt_fetch($stmt)) {
+          $lista = [$id, $marca, $placa, $modelo, $chaci, $tipo, $cor, $capacidade, $porta_mala, $alugado, $km_atual];
+        }
+    }
+
+    mysqli_stmt_close($stmt);
+
+    return $lista;
+}
+
 ?>

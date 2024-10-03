@@ -1,10 +1,27 @@
 # Us-4-mustequero
+1- arrumar funcoes pagamento 
+    1- input tipopag,valor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1- arrumar funcoes aluguel -----ARRUMADO
 
-
-2- arrumar funcoes pagamento 
-
-3- Fazer carros alugados deixarem de aparecer como disponivel para alugar, na tb_veiculos trocar o valor da coluna alugado_veiculo para S apos fazer o aluguel
+3- Fazer carros alugados deixarem de aparecer como disponivel para alugar, na tb_veiculos trocar o valor da coluna alugado_veiculo para S apos fazer o aluguel -----ARRUMADO
 
 4-terminar o inserir_aluguel
 
