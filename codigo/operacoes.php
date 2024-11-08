@@ -1,4 +1,28 @@
 <?php
+/**
+ * operações
+ * 
+ * funções gerais do site
+ * 
+ * @author Pedro <pedrohenriquereisferreira123@gmail.com>
+ * @author Yuri <email@email.com>
+ * @author Ana Caroline <email@email.com>
+ * @author João <email@email.com>
+ * 
+ * @requires session
+ */
+
+
+ /**
+  * salvarPF
+  *
+  * @param [MYSQLI]     $conexao    contem dados do DB
+  * @param [INT]        $cpf        id da pessoa fisica selecionada 
+  * @param [INT]        $cnh        cnh da pessoa fisica selecionada 
+  * @param [VARCHAR]    $nome       nome da pessoa selecionada
+  * @param [VARCHAR]    $telefone   telefone da pessoa fisica 
+  * @return void
+  */
 
 function salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone)
 {
