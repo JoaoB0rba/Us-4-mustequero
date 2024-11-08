@@ -15,7 +15,6 @@
 
  /**
   * salvarPF
-  
   *
   * @param [MYSQLI]     $conexao    contem dados do DB
   * @param [INT]        $cpf        id da pessoa fisica selecionada 
