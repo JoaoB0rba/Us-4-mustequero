@@ -22,6 +22,7 @@
   * @param [VARCHAR]    $nome       nome da pessoa selecionada
   * @param [VARCHAR]    $telefone   telefone da pessoa fisica 
   * @return void
+
   */
 
 function salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone)
