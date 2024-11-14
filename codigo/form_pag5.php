@@ -68,7 +68,7 @@ foreach ($veiculosSelecionados as $idVeiculo) {
     atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
 
     // Deletar o registro do veículo no aluguel
-    deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
+    // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
 }
 
 // Exibe o valor total
