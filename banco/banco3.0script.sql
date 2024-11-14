@@ -211,14 +211,14 @@ INSERT INTO `tb_pessoas` (nome, tipo, telefone) VALUES
 ('Gabriel Freitas', 'pf', '(62) 90123-4567');
 INSERT INTO `tb_veiculo` (marca_veiculo, placa_veiculo, modelo_veiculo, numero_chaci_veiculo, tipo_veiculo, cor_veiculo, capacidade_veiculo, porta_mala_veiculo, alugado_veiculo, km_atual) VALUES
 ('Toyota', 'ABC1234', 'Corolla', '1HGBH41JXMN109186', 'Sedan', 'Preto', '5', '500L', 'N', '10'),
-('Honda', 'DEF5678', 'Civic', '1HGBH41JXMN109187', 'Sedan', 'Branco', '5', '520L', 'S', '23'),
+('Honda', 'DEF5678', 'Civic', '1HGBH41JXMN109187', 'Sedan', 'Branco', '5', '520L', 'N', '23'),
 ('Ford', 'GHI9012', 'Focus', '1HGBH41JXMN109188', 'Hatch', 'Azul', '5', '450L', 'N', '34'),
 ('Chevrolet', 'JKL3456', 'Onix', '1HGBH41JXMN109189', 'Hatch', 'Vermelho', '5', '400L', 'N', '54'),
-('Fiat', 'MNO7890', 'Argo', '1HGBH41JXMN109190', 'Hatch', 'Cinza', '5', '370L', 'S', '65'),
+('Fiat', 'MNO7890', 'Argo', '1HGBH41JXMN109190', 'Hatch', 'Cinza', '5', '370L', 'N', '65'),
 ('Volkswagen', 'PQR1234', 'Golf', '1HGBH41JXMN109191', 'Hatch', 'Preto', '5', '460L', 'N', '67'),
-('Hyundai', 'STU5678', 'HB20', '1HGBH41JXMN109192', 'Hatch', 'Branco', '5', '420L', 'S', '43'),
+('Hyundai', 'STU5678', 'HB20', '1HGBH41JXMN109192', 'Hatch', 'Branco', '5', '420L', 'N', '43'),
 ('Nissan', 'VWX9012', 'Kicks', '1HGBH41JXMN109193', 'SUV', 'Azul', '5', '500L', 'N', '23'),
-('Jeep', 'YZA3456', 'Renegade', '1HGBH41JXMN109194', 'SUV', 'Vermelho', '5', '520L', 'S', '43'),
+('Jeep', 'YZA3456', 'Renegade', '1HGBH41JXMN109194', 'SUV', 'Vermelho', '5', '520L', 'N', '43'),
 ('Renault', 'BCD7890', 'Captur', '1HGBH41JXMN109195', 'SUV', 'Cinza', '5', '480L', 'N', '54');
 INSERT INTO `tb_pessoa_juridica` (cnpj, tb_pessoas_idpessoas) VALUES
 ('12.345.678/0001-00', (SELECT idpessoas FROM tb_pessoas WHERE nome = 'Empresa X')),
@@ -242,46 +242,3 @@ INSERT INTO `tb_pessoa_fisica` (cpf, cnh, tb_pessoas_idpessoas) VALUES
 ('456.789.012-34', '456789012345678', (SELECT idpessoas FROM tb_pessoas WHERE nome = 'Thiago Moreira')),
 ('567.890.123-45', '567890123456789', (SELECT idpessoas FROM tb_pessoas WHERE nome = 'Paula Gomes')),
 ('678.901.234-56', '678901234567890', (SELECT idpessoas FROM tb_pessoas WHERE nome = 'Gabriel Freitas'));
-INSERT INTO `tb_aluguel` (tb_funcionario_idtb_funcionario, tb_pessoas_idpessoas) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
-INSERT INTO `tb_pagamento` (tipo_pagamento, preco_pagamento, valor_valorkm, tb_aluguel_idtb_aluguel) VALUES
-('Cartão de Crédito', '150.00', '0.50', '1'),
-('Dinheiro', '100.00', '0.45', '1'),
-('Transferência', '120.00', '0.48', '1'),
-('Pix', '130.00', '0.47', '1'),
-('Boleto', '140.00', '0.46', '1'),
-('Cartão de Débito', '160.00', '0.55', '1'),
-('Dinheiro', '110.00', '0.49', '1'),
-('Pix', '125.00', '0.51', '1'),
-('Cartão de Crédito', '180.00', '0.60', '1'),
-('Transferência', '140.00', '0.52', '1'),
-('Boleto', '135.00', '0.53', '1'),
-('Cartão de Débito', '150.00', '0.58', '1'),
-('Dinheiro', '90.00', '0.43', '1'),
-('Transferência', '170.00', '0.54', '1'),
-('Pix', '160.00', '0.57', '1'),
-('Boleto', '145.00', '0.59', '1'),
-('Dinheiro', '105.00', '0.48', '1'),
-('Cartão de Crédito', '190.00', '0.62', '1'),
-('Transferência', '200.00', '0.65', '1'),
-('Pix', '175.00', '0.61', '1');
-INSERT INTO `tb_aluguel_has_tb_veiculo` (tb_aluguel_idtb_aluguel, tb_veiculo_idtb_veiculo, kmfinal, kminicial) VALUES
-(1, 1, '1000', '500'),
-(2, 2, '2000', '1500'),
-(3, 3, '3000', '2500'),
-(4, 4, '4000', '3500'),
-(5, 5, '5000', '4500'),
-(6, 6, '6000', '5500'),
-(7, 7, '7000', '6500'),
-(8, 8, '8000', '7500'),
-(9, 9, '9000', '8500'),
-(10, 10, '10000', '9500');

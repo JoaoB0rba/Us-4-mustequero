@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
 </head>
 <body>
-    <form action="inserir_pessoa.php">
+    <form id="pessoa fisica" action="inserir_pessoa.php">
         Nome: <br>
-        <input type="text" name="nome"> <br><br>
-       
+        <input type="text" name="nome"> <br><br>  
         Telefone:
         <input type="text" name="telefone"> <br><br>
         CPF:
@@ -20,5 +20,80 @@
 
         <input type="submit" value="Salvar">
     </form>
+
+    <script>
+        $(document).ready(function () {
+            $("#pessoa fisica").validate({
+                rules: {
+                    nome: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    telefone: {
+                        required: true,
+                        minlength: 9,
+                        maxlength: 9, 
+                        number: true
+                    },
+                    CPF: {
+                        required: true,
+                        minlength: 11,
+                        maxlength: 11,
+                        number: true
+                        
+                    },
+                    CNH: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10,
+                        number: true
+                    }
+                },
+                messages: {
+                    nome: {
+                        required: "Campo nome é obrigatório.",
+                        minlength: "O nome deve ter pelo menos 2 caracteres."
+                    },
+                    telefone: {
+                        required: "Campo telefone é obrigatório.",
+                        minlength: "O telefone deve ter pelo menos 9 caracteres.",
+                        number: "So é aceito numeros"
+                    },
+                    CPF: {
+                        required: "Campo CPF é obrigatório.",
+                        number: "So é aceito numeros"
+                    },
+                    CNH: {
+                        required: "Endereço de e-mail é obrigatório.",
+                        CNH: "Informe uma CHN válido.",
+                        number: "So é aceito numeros"
+                    }
+                },
+                messages: {
+                    nome: {
+                        required: "Campo nome é obrigatório.",
+                        minlength: "O nome deve ter pelo menos 2 caracteres."
+                    },
+                    usuario: {
+                        required: "Campo usuário é obrigatório.",
+                        minlength: "O usuário deve ter pelo menos 8 caracteres."
+                    },
+                    usuario2: {
+                        required: "Confirme o nome de usuário.",
+                        equalTo: "Os nomes de usuário não correspondem."
+                    },
+                    email: {
+                        required: "Endereço de e-mail é necessário.",
+                        email: "Informe um e-mail válido."
+                    },
+                    email2: {
+                        required: "Confirme o endereço de e-mail",
+                        equalTo: "Os e-mails não correspondem",
+                        email: "Informe um e-mail válido.",
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
