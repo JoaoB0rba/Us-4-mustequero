@@ -218,12 +218,24 @@ function listarCliente($conexao, $tipocliente)
 
 function listarClienteAlugado($conexao, $tipocliente)
 {
-    // Seleciona apenas os clientes que têm aluguéis
+
+
+// consulta que tras os alugueis sem pagamentos
+//     select *
+// from tb_aluguel a
+// left join tb_pagamento p
+// on a.idtb_aluguel = p.tb_aluguel_idtb_aluguel
+// where p.tb_aluguel_idtb_aluguel is null
+
+
+
+    // Seleciona apenas os clientes que têm aluguéis pendentes
     $sql = "
-        SELECT p.idpessoas, p.nome, p.telefone 
+        SELECT DISTINCT p.idpessoas, p.nome, p.telefone 
         FROM tb_pessoas p
         JOIN tb_aluguel a ON p.idpessoas = a.tb_pessoas_idpessoas
-        WHERE p.tipo = ?
+        LEFT JOIN tb_pagamento pag ON a.idtb_aluguel = pag.tb_aluguel_idtb_aluguel
+        WHERE p.tipo = ? AND pag.tb_aluguel_idtb_aluguel IS NULL
         GROUP BY p.idpessoas
     ";
     
@@ -245,6 +257,7 @@ function listarClienteAlugado($conexao, $tipocliente)
     mysqli_stmt_close($stmt);
     return $lista;
 }
+
 
 
 function listarCarrosN($conexao) {
