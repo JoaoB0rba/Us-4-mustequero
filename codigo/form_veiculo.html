@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <form id="veiculo" action="inserir_veiculo.php" method="get">
+        
+        <label for="marca">Marca:</label> <br>
+        <input type="text" id="marca" name="marca">
+        <br><br>
+        <label for="placa">Placa:</label> <br>
+        <input type="text" id="placa" name="placa">
+        <br><br>
+        <label for="modelo">Modelo:</label> <br>
+        <input type="text" id="modelo" name="modelo">
+        <br><br>
+        <label for="numerodochaci">Número do Chassi:</label> <br>
+        <input type="text" id="numerodochaci" name="numerodochaci">
+        <br><br>
+        <label for="tipo">Tipo de Veículo:</label> <br>
+        <input type="text" id="tipo" name="tipo">
+        <br><br>
+        <label for="cor">Cor:</label> <br>
+        <input type="text" id="cor" name="cor">
+        <br><br>
+        <label for="capacidade">Capacidade:</label> <br>
+        <input type="text" id="capacidade" name="capacidade">
+        <br><br>
+        <label for="portamala">Porta-Mala:</label> <br>
+        <input type="text" id="portamala" name="portamala">
+        <br><br>
+        <label for="kmatual">Km atual:</label> <br>
+        <input type="text" id="kmatual" name="kmatual">
+        <br><br>
+
+        <!-- Situação:
+        <input type="text" name="alugado_veiculo"> <br><br> -->
+
+        <input type="hidden" name="alugado_veiculo" value="N">
+
+
+        
+        <input type="submit" value="Salvar">
+    </form>
+
+
+    <script>
+        $(document).ready(function () {
+            $("#veiculo").validate({
+                rules: {
+                    marca: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    placa: {
+                        required: true,
+                        minlength: 7,
+                    },
+                    modelo: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    numerodochaci: {
+                        required: true,
+                        minlength: 10,
+                    },
+                    tipo: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    cor: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    capacidade: {
+                        required: true,
+                        maxlength: 1,
+                    
+                    },
+                    portamala: {
+                        required: true,
+                        minlength: 2,
+                     
+                    },
+                    kmatual: {
+                        required: true,
+                        minlength: 2,
+                     
+                    },
+                },
+                messages: {
+                    marca: {
+                        required: "Campo Marca é obrigatório.",
+                        minlength: "A Marca deve ter pelo menos 2 caracteres."
+                    },
+                    placa: {
+                        required: "Campo Placa é obrigatório.",
+                        minlength: "Campo placa deve ter pelo menos 7 caracteres."
+                    },
+                    modelo: {
+                        required: "Campo Modelo é obrigatório.",
+                        minlength: "Campo Modelo deve ter pelo menos 2 caracteres."
+                    },
+                    numerodochaci: {
+                        required: "Campo Modelo é obrigatório.",
+                        minlength: "Campo Número de Chassi deve ter pelo menos 10 caracteres."
+                    },
+                    tipo: {
+                        required:"Campo Marca é obrigatório.",
+                        minlength: "Campo Modelo deve ter pelo menos 2 caracteres."
+                    },
+                    cor: {
+                        required:"Campo Cor é obrigatório.",
+                        minlength: "Campo Cor deve ter pelo menos 2 caracteres."
+                    },
+                    capacidade: {
+                        required:"Campo Capacidade é obrigatório.",
+                        minlength: "Campo Capacidade deve ter no máximo 1 caractere."
+                    },
+                    portamala: {
+                        required:"Campo Porta-mala é obrigatório.",
+                        minlength: "Campo Porta-mala deve ter pelo menos 2 caracteres."
+                    },
+                    kmatual: {
+                        required:"Campo Km atual é obrigatório.",
+                        minlength: "Campo Km atual deve ter pelo menos 2 caracteres."
+                    },
+                }
+            });
+        });
+    </script>
+</body>
+</html>
