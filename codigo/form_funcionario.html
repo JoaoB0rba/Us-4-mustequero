@@ -4,17 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="">
 </head>
 <body>
-    <form action="inserir_funcionario.php">
+    <form id="formulario" action="inserir_funcionario.php">
         Nome Funcionario: <br>
-        <input type="text" name="nome_funcionario"> <br><br>
+        <input type="text" name="nome_funcionario" id="nome_funcionario"> <br><br>
         CPF:
-        <input type="text" name="cpf_funcionario"> <br><br>
+        <input type="text" name="cpf_funcionario" id="cpf_funcionario"> <br><br>
         Telefone:
-        <input type="text" name="telefone_funcionario"> <br><br>
+        <input type="text" name="telefone_funcionario" id="telefone_funcionario"> <br><br>
         <input type="submit" value="Salvar">
     </form>
+    <script>
+        $(document).ready(function () {
+            $("#formulario").validate({
+                rules: {
+                    nome_funcionario: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    
+                    cpf_funcionario: {
+                        required: true,
+                        minlength: 11,
+                        number: true
+                    },
+                    telefone_funcionario: {
+                        required: true,
+                        minlength: 11, 
+                        number: true                 
+                     },
+                   
+                },
+                messages: {
+                    nome_funcionario: {
+                        required: "Campo nome é obrigatório.",
+                        minlength: "O nome deve ter pelo menos 3 caracteres."
+                    },
+                    cpf_funcionario: {
+                        required: "Campo cpf é obrigatório.",
+                        minlength: "O cpf deve ter 11 numeros.",
+                        number:" digite somente numeros"
+                    },
+                    telefone_funcionario: {
+                        required: "Confirme o telefone.",
+                        equalTo: "O numero de telefone esta incorreto.",
+                        number:" digite somente numeros"
+                        
+                        }
+                   
+                }
+            });
+        });
+    </script>
 </body>
 </html>
