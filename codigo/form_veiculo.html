@@ -69,6 +69,7 @@
                     numerodochaci: {
                         required: true,
                         minlength: 10,
+                        number: true
                     },
                     tipo: {
                         required: true,
@@ -80,17 +81,21 @@
                     },
                     capacidade: {
                         required: true,
-                        maxlength: 1,
+                        minlength: 1,
+                        number: true
                     
                     },
                     portamala: {
                         required: true,
                         minlength: 2,
+                        number: true
+
                      
                     },
                     kmatual: {
                         required: true,
                         minlength: 2,
+                        number:true
                      
                     },
                 },
