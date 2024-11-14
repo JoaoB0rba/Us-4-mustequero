@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="">
 </head>
 <body>
@@ -67,6 +69,7 @@
                     numerodochaci: {
                         required: true,
                         minlength: 10,
+                        number: true
                     },
                     tipo: {
                         required: true,
@@ -78,17 +81,21 @@
                     },
                     capacidade: {
                         required: true,
-                        maxlength: 1,
+                        minlength: 1,
+                        number: true
                     
                     },
                     portamala: {
                         required: true,
                         minlength: 2,
+                        number: true
+
                      
                     },
                     kmatual: {
                         required: true,
                         minlength: 2,
+                        number:true
                      
                     },
                 },
@@ -99,7 +106,8 @@
                     },
                     placa: {
                         required: "Campo Placa é obrigatório.",
-                        minlength: "Campo placa deve ter pelo menos 7 caracteres."
+                        minlength: "Campo Placa deve ter pelo menos 7 caracteres.",
+                        number: "Campo Placa deve conter apenas números"
                     },
                     modelo: {
                         required: "Campo Modelo é obrigatório.",
@@ -107,7 +115,8 @@
                     },
                     numerodochaci: {
                         required: "Campo Modelo é obrigatório.",
-                        minlength: "Campo Número de Chassi deve ter pelo menos 10 caracteres."
+                        minlength: "Campo Número de Chassi deve ter pelo menos 10 caracteres.",
+                        number: "Campo Placa deve conter apenas números"
                     },
                     tipo: {
                         required:"Campo Marca é obrigatório.",
@@ -119,7 +128,8 @@
                     },
                     capacidade: {
                         required:"Campo Capacidade é obrigatório.",
-                        minlength: "Campo Capacidade deve ter no máximo 1 caractere."
+                        minlength: "Campo Capacidade deve ter no máximo 1 caractere.",
+                        number: "Campo Capacidade deve conter apenas números"
                     },
                     portamala: {
                         required:"Campo Porta-mala é obrigatório.",

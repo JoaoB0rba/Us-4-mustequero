@@ -6,6 +6,7 @@
     <title>Document</title>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
     <link rel="stylesheet" href="">
 </head>
 <body>
@@ -20,6 +21,7 @@
     </form>
     <script>
         $(document).ready(function () {
+            $('#cpf_funcionario').mask('000.000.000-00');
             $("#formulario").validate({
                 rules: {
                     nome_funcionario: {
@@ -37,6 +39,7 @@
                         minlength: 11, 
                         number: true                 
                      },
+        
                    
                 },
                 messages: {
