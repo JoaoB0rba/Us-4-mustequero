@@ -22,6 +22,7 @@
     <script>
         $(document).ready(function () {
             $('#cpf_funcionario').mask('000.000.000-00');
+            $('#telefone_funcionario').mask('(00) 0 0000-0000');
             $("#formulario").validate({
                 rules: {
                     nome_funcionario: {
@@ -32,12 +33,13 @@
                     cpf_funcionario: {
                         required: true,
                         minlength: 11,
-                        number: true
+                        // number: true
                     },
                     telefone_funcionario: {
                         required: true,
                         minlength: 11, 
-                        number: true                 
+                        // maxlength:11,
+                        // number: true                 
                      },
         
                    
