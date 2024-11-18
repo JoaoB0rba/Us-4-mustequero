@@ -6,6 +6,8 @@
     <title>Document</title>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
+    
 </head>
 <body>
     <form id="pessoa fisica" action="inserir_pessoa.php">
@@ -23,6 +25,7 @@
 
     <script>
         $(document).ready(function () {
+            $('#CPF').mask('000.000.000-00');
             $("#pessoa fisica").validate({
                 rules: {
                     nome: {
@@ -56,42 +59,23 @@
                     },
                     telefone: {
                         required: "Campo telefone é obrigatório.",
-                        minlength: "O telefone deve ter pelo menos 9 caracteres.",
+                        minlength: "O telefone deve ter pelo menos 9 numeros.",
+                        maxlength: "maximo 9 numeros",
                         number: "So é aceito numeros"
                     },
                     CPF: {
                         required: "Campo CPF é obrigatório.",
+                        minlength: "o CPF deve ter pelo menos 11 numeros",
+                        maxlength: "maximo 11 numeros",
                         number: "So é aceito numeros"
                     },
                     CNH: {
                         required: "Endereço de e-mail é obrigatório.",
-                        CNH: "Informe uma CHN válido.",
+                        minlength: "A CNH deve ter pelo menos 10 numeros",
+                        maxlength: "max 10 numeros",
                         number: "So é aceito numeros"
                     }
                 },
-                messages: {
-                    nome: {
-                        required: "Campo nome é obrigatório.",
-                        minlength: "O nome deve ter pelo menos 2 caracteres."
-                    },
-                    usuario: {
-                        required: "Campo usuário é obrigatório.",
-                        minlength: "O usuário deve ter pelo menos 8 caracteres."
-                    },
-                    usuario2: {
-                        required: "Confirme o nome de usuário.",
-                        equalTo: "Os nomes de usuário não correspondem."
-                    },
-                    email: {
-                        required: "Endereço de e-mail é necessário.",
-                        email: "Informe um e-mail válido."
-                    },
-                    email2: {
-                        required: "Confirme o endereço de e-mail",
-                        equalTo: "Os e-mails não correspondem",
-                        email: "Informe um e-mail válido.",
-                    }
-                }
             });
         });
     </script>
