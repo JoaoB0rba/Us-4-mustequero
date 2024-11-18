@@ -71,7 +71,7 @@ foreach ($veiculosSelecionados as $idVeiculo) {
     // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
 
 }
-efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
+    efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
 
 // Exibe o valor total
 echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";
