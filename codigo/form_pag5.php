@@ -69,7 +69,9 @@ foreach ($veiculosSelecionados as $idVeiculo) {
 
     // Deletar o registro do veículo no aluguel
     // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
+
 }
+efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
 
 // Exibe o valor total
 echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";

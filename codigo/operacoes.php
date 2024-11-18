@@ -122,18 +122,26 @@ function listarCarros($conexao)
 }
 
 
+
 function efetuarPagamento($conexao, $tipo, $preco_pagamento, $valor_valorkm, $tb_aluguel_idtb_aluguel) {
-    $sql = "INSERT INTO tb_pagamento (tipo, preco_pagamento, valor_valorkm, tb_aluguel_idtb_aluguel) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_pagamento (tipo_pagamento, preco_pagamento, valor_valorkm, tb_aluguel_idtb_aluguel) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "idds", $tipo, $preco, $preco_pagamento, $tb_aluguel_idtb_aluguel);
+    // Corrige os parâmetros de ligação
+    mysqli_stmt_bind_param($stmt, "sddi", $tipo, $preco_pagamento, $valor_valorkm, $tb_aluguel_idtb_aluguel);
+
+    // Executa a consulta
     mysqli_stmt_execute($stmt);
 
-    $id = mysqli_stmt_insert_id($stmt);
+    // Obtém o ID do pagamento inserido
+    $id = mysqli_insert_id($conexao);
+
+    // Fecha a declaração
     mysqli_stmt_close($stmt);
 
     return $id;
 }
+
 
 // UPDATE emprestimo_has_veiculo SET km_final = 50000 WHERE idemprestimo = 1 AND idveiculo = 1;
 
@@ -220,14 +228,6 @@ function listarClienteAlugado($conexao, $tipocliente)
 {
 
 
-// consulta que tras os alugueis sem pagamentos
-//     select *
-// from tb_aluguel a
-// left join tb_pagamento p
-// on a.idtb_aluguel = p.tb_aluguel_idtb_aluguel
-// where p.tb_aluguel_idtb_aluguel is null
-
-
 
     // Seleciona apenas os clientes que têm aluguéis pendentes
     $sql = "
@@ -257,7 +257,6 @@ function listarClienteAlugado($conexao, $tipocliente)
     mysqli_stmt_close($stmt);
     return $lista;
 }
-
 
 
 function listarCarrosN($conexao) {
