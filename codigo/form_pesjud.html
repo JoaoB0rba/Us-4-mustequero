@@ -9,7 +9,7 @@
     <script src="./js/jquery.mask.min.js"></script>
 </head>
 <body>
-    <form id="" action="inserir_pesjud.php">
+    <form id="pessoa juridica" action="inserir_pesjud.php">
         Nome: <br>
         <input type="text" name="nome"> <br><br>
         Telefone:
@@ -23,7 +23,7 @@
     
     <script>
         $(document).ready(function () {
-            $("#pessoa fisica").validate({
+            $("#pessoa juridica").validate({
                 rules: {
                     nome: {
                         required: true,
