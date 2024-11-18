@@ -17,6 +17,9 @@
         <input type="text" name="cpf_funcionario" id="cpf_funcionario"> <br><br>
         Telefone:
         <input type="text" name="telefone_funcionario" id="telefone_funcionario"> <br><br>
+        Senha: <br>
+    <input type="text" name="senhaa" id="senhaa">
+    <br>
         <input type="submit" value="Salvar">
     </form>
     <script>
@@ -41,6 +44,13 @@
                         // maxlength:11,
                         // number: true                 
                      },
+
+                      
+                    senhaa: {
+                        required: true,
+                        maxlength: 10,
+                  
+                }
         
                    
                 },
@@ -59,7 +69,12 @@
                         equalTo: "O numero de telefone esta incorreto.",
                         number:" digite somente numeros"
                         
-                        }
+                    },
+                    senhaa: {
+                        required: "Campo cpf é obrigatório para efetuar o login.",
+                        maxlength: "A senha deve ter no máximo 10 caracteres.",
+                       
+                    }
                    
                 }
             });

@@ -77,11 +77,11 @@ function salvarpessoa($conexao, $nome, $tipo, $telefone)
 
 }
 
-function salvarFuncionario($conexao, $nome, $cpf, $telefone) {
-    $sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_funcionario) VALUES (?, ?, ?)";
+function salvarFuncionario($conexao, $nome, $cpf, $telefone, $senhaa) {
+    $sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_funcionario, senhaa) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "sss", $nome, $cpf, $telefone);
+    mysqli_stmt_bind_param($stmt, "ssss", $nome, $cpf, $telefone, $senhaa);
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);

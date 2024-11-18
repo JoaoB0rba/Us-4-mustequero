@@ -16,14 +16,14 @@
     Nome: <br>
     <input type="text" name="nome_funcionario" id="nome_funcionario"><br>
     Senha: <br>
-    <input type="text" name="cpf_funcionario" id="cpf_funcionario">
+    <input type="text" name="senhaa" id="senhaa">
     <br>
     <input type="submit" value="login" >
 
 </form>
 <script>
     $(document).ready(function () {
-        $('#cpf_funcionario').mask('000.000.000-00');
+    
         $("#formulario").validate({
             rules: {
                 nome_funcionario: {
@@ -31,10 +31,10 @@
                     minlength: 2,
                 },
                 
-                cpf_funcionario: {
+                senhaa: {
                     required: true,
-                    minlength: 11,
-                    number: true
+                    maxlength: 10,
+                  
                 }
     
             },
@@ -43,10 +43,10 @@
                     required: "Campo nome é obrigatório para efetuar o login.",
                     minlength: "O nome deve ter pelo menos 2 caracteres."
                 },
-                cpf_funcionario: {
+                senhaa: {
                     required: "Campo cpf é obrigatório para efetuar o login.",
-                    minlength: "O cpf deve ter 11 numeros.",
-                    number:" Digite somente numeros"
+                    maxlength: "A senha deve ter no máximo 10 caracteres.",
+                 
                 }
             }
         });
