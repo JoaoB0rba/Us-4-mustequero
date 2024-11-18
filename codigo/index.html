@@ -1,19 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="">
 </head>
 <body>
-    <a href="form_funcionario.html">funcionario </a> <br>
-    <a href="form_veiculo.html">veiculo </a><br>
-    <a href="form_pesfisica.html">PessoaFisica </a><br>
-    <a href="form_pesjud.html">PessoaJuridica </a><br>
-    <a href="listar_veiculo.php">ListarVeiculos </a><br>
-    <a href="form_aluguel.php">Aluguel </a><br>
-    <a href="form_pag.php">Pagamento </a><br>
+    <form action="login.php" method="post">
+    Nome: <br>
+    <input type="text" name="nome_funcionario" id="nome_funcionario"><br>
+    Senha: <br>
+    <input type="text" name="cpf_funcionario" id="cpf_funcionario">
+    <br>
+    <input type="submit" value="login" >
 
+</form>
+<script>
+    $(document).ready(function () {
+        $('#cpf_funcionario').mask('000.000.000-00');
+        $("#formulario").validate({
+            rules: {
+                nome_funcionario: {
+                    required: true,
+                    minlength: 2,
+                },
+                
+                cpf_funcionario: {
+                    required: true,
+                    minlength: 11,
+                    number: true
+                }
+    
+            },
+            messages: {
+                nome_funcionario: {
+                    required: "Campo nome é obrigatório para efetuar o login.",
+                    minlength: "O nome deve ter pelo menos 2 caracteres."
+                },
+                cpf_funcionario: {
+                    required: "Campo cpf é obrigatório para efetuar o login.",
+                    minlength: "O cpf deve ter 11 numeros.",
+                    number:" Digite somente numeros"
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
-
