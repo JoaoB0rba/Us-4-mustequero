@@ -6,6 +6,7 @@
     <title>Document</title>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
+    
 </head>
 <body>
     <form id="pessoa fisica" action="inserir_pessoa.php">
@@ -23,6 +24,7 @@
 
     <script>
         $(document).ready(function () {
+            $('#CPF').mask('000.000.000-00');
             $("#pessoa fisica").validate({
                 rules: {
                     nome: {
@@ -56,16 +58,20 @@
                     },
                     telefone: {
                         required: "Campo telefone é obrigatório.",
-                        minlength: "O telefone deve ter pelo menos 9 caracteres.",
+                        minlength: "O telefone deve ter pelo menos 9 numeros.",
+                        maxlength: "maximo 9 numeros",
                         number: "So é aceito numeros"
                     },
                     CPF: {
                         required: "Campo CPF é obrigatório.",
+                        minlength: "o CPF deve ter pelo menos 11 numeros",
+                        maxlength: "maximo 11 numeros",
                         number: "So é aceito numeros"
                     },
                     CNH: {
                         required: "Endereço de e-mail é obrigatório.",
-                        CNH: "Informe uma CHN válido.",
+                        minlength: "A CNH deve ter pelo menos 10 numeros",
+                        maxlength: "max 10 numeros",
                         number: "So é aceito numeros"
                     }
                 },
