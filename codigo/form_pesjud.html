@@ -6,9 +6,10 @@
     <title>Document</title>
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
 </head>
 <body>
-    <form id="" action="inserir_pesjud.php">
+    <form id="pessoa juridica" action="inserir_pesjud.php">
         Nome: <br>
         <input type="text" name="nome"> <br><br>
         Telefone:
@@ -19,5 +20,49 @@
 
         <input type="submit" value="Salvar">
     </form>
+    
+    <script>
+        $(document).ready(function () {
+            $("#pessoa juridica").validate({
+                rules: {
+                    nome: {
+                        required: true,
+                        minlength: 2,
+                    },
+                    telefone: {
+                        required: true,
+                        minlength: 9,
+                        maxlength: 9, 
+                        number: true
+                    },
+                    CNPJ: {
+                        required: true,
+                        minlength: 14,
+                        maxlength: 14,
+                        number: true
+                        
+                    },
+                },
+                messages: {
+                    nome: {
+                        required: "Campo nome é obrigatório.",
+                        minlength: "O nome deve ter pelo menos 2 numeros."
+                    },
+                    telefone: {
+                        required: "Campo telefone é obrigatório.",
+                        minlength: "O telefone deve ter pelo menos 9 numeros.",
+                        maxlength: "maximo 9 numeros",
+                        number: "So é aceito numeros"
+                    },
+                    CNPJ: {
+                        required: "Campo CPF é obrigatório.",
+                        minlength: "A CNPJ deve ter pelo menos 14 numeros",
+                        maxlength: "maximo 14 numeros",
+                        number: "So é aceito numeros"
+                    },
+                },
+            });
+        });
+    </script>
 </body>
 </html>
