@@ -16,7 +16,7 @@ $idaluguel = $_GET['idaluguel'];
 </head>
 <body>
     <h2>Lançar pagamento</h2>
-    <form action="form_pag5.php" method="POST" id="pag5">
+    <form id = "pag4" action="form_pag5.php" method="POST">
 
         <input type="hidden" name="idaluguel" value="<?php echo $idaluguel; ?>">
 
@@ -45,6 +45,7 @@ $idaluguel = $_GET['idaluguel'];
 
 
             echo "Pagar agora:<input type='checkbox' name='veiculos[]' value='$veiculo[0]'>"; // ID do veículo
+<<<<<<< Updated upstream
 
 
 
@@ -53,8 +54,11 @@ $idaluguel = $_GET['idaluguel'];
 
             
             echo "<input type='hidden' name='km_inicial[$veiculo[0]]' value='$kmInicial'>"; // Envia o Km Inicial para a próxima página
+=======
+            echo "<input type='hidden' name='kminicial[$veiculo[0]]' value='$kminicial'>"; // Envia o Km Inicial para a próxima página
+>>>>>>> Stashed changes
             echo "<p>Veículo: $veiculo[1] - $veiculo[3]</p>";
-            echo "<p>Km Inicial: $kmInicial</p>";
+            echo "<p>Km Inicial: $kminicial</p>";
             echo "Km Final: <input type='text' name='kmfinal' id='kmfinal' [$veiculo[0]]'>"; // Para que o nome do input seja associado ao ID do veículo
             echo "<hr>";
         }
@@ -65,7 +69,7 @@ $idaluguel = $_GET['idaluguel'];
     <script>
         $(document).ready(function () {
             
-            $("#pag5").validate({
+            $("#pag4").validate({
                 rules: {
                     precokm: {
                         required: true,

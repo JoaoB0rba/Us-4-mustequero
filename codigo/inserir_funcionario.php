@@ -11,6 +11,6 @@ $senhaa = $_GET['senhaa'];
 
 
 salvarFuncionario($conexao, $nome_funcionario, $cpf_funcionario, $telefone_funcionario, $senhaa);
-header("location: index.html")
+header("location: telainicial.html")
 
 ?>

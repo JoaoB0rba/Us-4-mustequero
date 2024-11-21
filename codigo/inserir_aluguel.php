@@ -19,6 +19,6 @@ foreach ($carros as $id) {
     salvarVeiculoAluguel($conexao, $idaluguel, $id);
 }
 
-header("location: index.html")
+header("location: telainicial.html")
 
 ?>

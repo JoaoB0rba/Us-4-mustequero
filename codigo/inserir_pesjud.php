@@ -11,5 +11,5 @@ $tipo = 'pj';
 
 salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone);
 
-header("location: index.html")
+header("location: telainicial.html")
 ?>

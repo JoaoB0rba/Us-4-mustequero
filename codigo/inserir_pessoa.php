@@ -12,4 +12,4 @@ $tipo = 'pf';
 
 salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone);
 
-header("location: index.html");
+header("location: telainicial.html");

@@ -17,7 +17,7 @@
             header('Location: telainicial.html');
             exit();
         } else {
-            header('Location: index.html');
+            header('Location: telainicial.html');
             exit();
         }
     } 

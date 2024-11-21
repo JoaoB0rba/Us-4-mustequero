@@ -18,7 +18,7 @@ $km_atual = $_GET['km_atual'];
 
 salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo, $numero_chaci_veiculo, $tipo_veiculo, $cor_veiculo, $capacidade_veiculo, $porta_mala_veiculo, $alugado_veiculo, $km_atual);
 
-header("location: index.html")
+header("location: telainicial.html")
 
 
 ?>
