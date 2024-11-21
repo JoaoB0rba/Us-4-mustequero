@@ -39,7 +39,19 @@ $idaluguel = $_GET['idaluguel'];
             $veiculo = listarVeiculoPorId($conexao, $carroAluguel[0]);
             $kmInicial = $veiculo[10]; // Supondo que o Km Inicial está no índice 10
             echo "<br>";
+
+
+
+
+
             echo "Pagar agora:<input type='checkbox' name='veiculos[]' value='$veiculo[0]'>"; // ID do veículo
+
+
+
+
+
+
+            
             echo "<input type='hidden' name='km_inicial[$veiculo[0]]' value='$kmInicial'>"; // Envia o Km Inicial para a próxima página
             echo "<p>Veículo: $veiculo[1] - $veiculo[3]</p>";
             echo "<p>Km Inicial: $kmInicial</p>";
@@ -65,10 +77,7 @@ $idaluguel = $_GET['idaluguel'];
                         required: true,
                         minlength: 2,
                         number: true
-                    },
-                  
-        
-                   
+                    },  
                 },
                 messages: {
                     precokm: {
