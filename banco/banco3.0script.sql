@@ -14,6 +14,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema bancoveiculos
 -- -----------------------------------------------------
+
+
 CREATE SCHEMA IF NOT EXISTS `bancoveiculos` DEFAULT CHARACTER SET utf8 ;
 USE `bancoveiculos` ;
 
@@ -25,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `bancoveiculos`.`tb_funcionario` (
   `nome_funcionario` VARCHAR(45) NOT NULL,
   `cpf_funcionario` VARCHAR(45) NOT NULL,
   `telefone_funcionario` VARCHAR(45) NOT NULL,
+  `senhaa` VARCHAR (10) NOT NULL,
   PRIMARY KEY (`idtb_funcionario`))
 ENGINE = InnoDB;
 
@@ -167,27 +170,28 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-INSERT INTO `tb_funcionario` (nome_funcionario, cpf_funcionario, telefone_funcionario) VALUES
-('João Silva', '11122233344', '(62) 91234-5678'),
-('Maria Souza', '22233344455', '(62) 92345-6789'),
-('Pedro Costa', '33344455566', '(62) 93456-7890'),
-('Ana Lima', '44455566677', '(62) 94567-8901'),
-('Carlos Santos', '55566677788', '(62) 95678-9012'),
-('Beatriz Carvalho', '66677788899', '(62) 96789-0123'),
-('Fernando Torres', '77788899900', '(62) 97890-1234'),
-('Juliana Pereira', '88899900011', '(62) 98901-2345'),
-('Bruno Rocha', '99900011122', '(62) 99012-3456'),
-('Isabela Mendes', '00011122233', '(62) 90123-4567'),
-('Marcos Dias', '11122233344', '(62) 91234-5678'),
-('Laura Costa', '22233344455', '(62) 92345-6789'),
-('Lucas Nunes', '33344455566', '(62) 93456-7890'),
-('Renata Oliveira', '44455566677', '(62) 94567-8901'),
-('Thiago Moreira', '55566677788', '(62) 95678-9012'),
-('Paula Gomes', '66677788899', '(62) 96789-0123'),
-('Gabriel Freitas', '77788899900', '(62) 97890-1234'),
-('Camila Souza', '88899900011', '(62) 98901-2345'),
-('Ricardo Martins', '99900011122', '(62) 99012-3456'),
-('Fernanda Lima', '00011122233', '(62) 90123-4567');
+INSERT INTO `tb_funcionario` (nome_funcionario, cpf_funcionario, telefone_funcionario, senhaa) VALUES
+('João Silva', '11122233344', '(62) 91234-5678', 'joao1234'),
+('Maria Souza', '22233344455', '(62) 92345-6789', 'maria5678'),
+('Pedro Costa', '33344455566', '(62) 93456-7890', 'pedro8901'),
+('Ana Lima', '44455566677', '(62) 94567-8901', 'ana56789'),
+('Carlos Santos', '55566677788', '(62) 95678-9012', 'carlos999'),
+('Beatriz Carvalho', '66677788899', '(62) 96789-0123', 'bea123456'),
+('Fernando Torres', '77788899900', '(62) 97890-1234', 'fernando12'),
+('Juliana Pereira', '88899900011', '(62) 98901-2345', 'juliana11'),
+('Bruno Rocha', '99900011122', '(62) 99012-3456', 'bruno2023'),
+('Isabela Mendes', '00011122233', '(62) 90123-4567', 'isabela22'),
+('Marcos Dias', '11122233344', '(62) 91234-5678', 'marcos789'),
+('Laura Costa', '22233344455', '(62) 92345-6789', 'laura3456'),
+('Lucas Nunes', '33344455566', '(62) 93456-7890', 'lucas1234'),
+('Renata Oliveira', '44455566677', '(62) 94567-8901', 'renata567'),
+('Thiago Moreira', '55566677788', '(62) 95678-9012', 'thiago789'),
+('Paula Gomes', '66677788899', '(62) 96789-0123', 'paula987'),
+('Gabriel Freitas', '77788899900', '(62) 97890-1234', 'gabi12345'),
+('Camila Souza', '88899900011', '(62) 98901-2345', 'camila123'),
+('Ricardo Martins', '99900011122', '(62) 99012-3456', 'rick5555'),
+('Fernanda Lima', '00011122233', '(62) 90123-4567', 'fernanda88');
+
 INSERT INTO `tb_pessoas` (nome, tipo, telefone) VALUES
 ('João Silva', 'pf', '(62) 91234-5678'),
 ('Maria Souza', 'pf', '(62) 92345-6789'),

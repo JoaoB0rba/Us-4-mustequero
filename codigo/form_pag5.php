@@ -52,45 +52,102 @@ foreach ($veiculosSelecionados as $idVeiculo) {
 echo "</ul>";
 
 // Cálculo do valor total
-foreach ($veiculosSelecionados as $idVeiculo) {
+//=foreach ($veiculosSelecionados as $idVeiculo) {
     // Obtém o km inicial e final correspondentes
-    $kmInicial = $kmIniciais[$idVeiculo];
-    $kmFinal = $kmfinais[$idVeiculo];
+    //=$kmInicial = $kmIniciais[$idVeiculo];
+    //=$kmFinal = $kmfinais[$idVeiculo];
     
     // Calcula a distância percorrida e o valor do aluguel para o veículo
-    $distanciaPercorrida = $kmFinal - $kmInicial;
-    $valorVeiculo = $distanciaPercorrida * $precokm;
+    //=$distanciaPercorrida = $kmFinal - $kmInicial;
+    //=$valorVeiculo = $distanciaPercorrida * $precokm;
 
     // Adiciona ao valor total
-    $valorTotal += $valorVeiculo;
+    //=$valorTotal += $valorVeiculo;
 
     // Atualiza a quilometragem atual do veículo
-    atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
+    //=atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
 
     // Deletar o registro do veículo no aluguel
     // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
 
-}
-    efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
+//=}
+    //=efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
 
 // Exibe o valor total
-echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";
+//=echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";
 
 // Atualiza o status dos veículos para 'não alugados'
-$_SESSION['carros'] = $veiculosSelecionados;
+//=$_SESSION['carros'] = $veiculosSelecionados;
 
 // Chama a função para atualizar os veículos como não alugados
-if (isset($_SESSION['carros'])) {
-    $carros = $_SESSION['carros']; // Recebe o array de IDs dos carros
-    atualiza_nao_alugado($conexao, $carros); // Chama a função para atualizar os veículos como não alugados
-}
+//=if (isset($_SESSION['carros'])) {
+  //=  $carros = $_SESSION['carros']; // Recebe o array de IDs dos carros
+   //= atualiza_nao_alugado($conexao, $carros); // Chama a função para atualizar os veículos como não alugados
+//=}
 ?>
 
-<!-- Botão de conclusão do pagamento -->
+<!-- Botão de conclusão do pagamento 
 <p>Pagamento efetuado</p>
 <a href="index.html">
     <button>Concluído</button>
 </a>
 
 </body>
+</html>-->
+
+
+<script>
+        $(document).ready(function() {
+            $(".kmfinal").on("input", function() {
+                const kminicial = parseFloat($(this).closest(".mb-3").find(".kminicial").text());
+                const kmfinal = parseFloat($(this).val()) || 0;
+                const novakm = kminicial + kmfinal;
+                $(this).closest(".mb-3").find(".novakm").text(novakm.toFixed(2));
+            });
+
+            function calcularValor() {
+                let totalkm = 0;
+
+                $(".kmfinal").each(function() {
+                    totalkm += parseFloat($(this).val()) || 0;
+                });
+
+                const precoporKm = parseFloat($("input[name='valor_valorkm']").val()) || 0;
+                const valorFinal = totalkm * precoporKm;
+
+                $("input[name='valor']").val(valorFinal.toFixed(2));
+                $("#kmtotaldoaluguel").text(totalkm.toFixed(2));
+            }
+
+            $(".kmfinal, input[name='valor_valorkm']").on("input", calcularValor);
+
+            calcularValor();
+
+            $("#formPagamento").validate({
+                rules: {
+                    valor_valorkm: {
+                        required: true,
+                        number: true,
+                        min: 0,
+                    },
+                    data_pagamento: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    valor_valorkm: {
+                        required: "O preço do km rodado do é obrigatório.",
+                        number: "O preço do km deve ser um número válido.",
+                        min: "O preço não pode ser um valor negativo",
+                    },
+                    data_pagamento: {
+                        required: "Informe a data em que o pagamento foi feito.",
+                    },
+                },
+            });
+        });
+    </script>
+
+</body>
+
 </html>
