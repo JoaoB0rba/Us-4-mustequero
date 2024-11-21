@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="">
 </head>
 <body>
-    <form action="login.php" method="post">
+    <form id = "login" action="login.php" method="post">
     Nome: <br>
     <input type="text" name="nome_funcionario" id="nome_funcionario"><br>
     Senha: <br>
@@ -24,7 +24,7 @@
 <script>
     $(document).ready(function () {
     
-        $("#formulario").validate({
+        $("#login").validate({
             rules: {
                 nome_funcionario: {
                     required: true,

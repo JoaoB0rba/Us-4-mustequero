@@ -62,6 +62,7 @@
                     placa: {
                         required: true,
                         minlength: 7,
+                        maxlength:7,
                     },
                     modelo: {
                         required: true,
@@ -69,7 +70,7 @@
                     },
                     numerodochaci: {
                         required: true,
-                        minlength: 10,
+                        minlength: 17,
                         number: true
                     },
                     tipo: {
@@ -78,7 +79,7 @@
                     },
                     cor: {
                         required: true,
-                        minlength: 2,
+                        minlength: 2
                     },
                     capacidade: {
                         required: true,
@@ -91,14 +92,13 @@
                         minlength: 2,
                         number: true
 
-                     
                     },
                     kmatual: {
                         required: true,
                         minlength: 2,
                         number:true
                      
-                    },
+                    }
                 },
                 messages: {
                     marca: {
@@ -107,8 +107,8 @@
                     },
                     placa: {
                         required: "Campo Placa é obrigatório.",
-                        minlength: "Campo Placa deve ter pelo menos 7 caracteres.",
-                        number: "Campo Placa deve conter apenas números"
+                        minlength: "Campo Placa deve ter pelo  7 caracteres.",
+                        maxlength: "Campo Placa deve ter pelo  7 caracteres."
                     },
                     modelo: {
                         required: "Campo Modelo é obrigatório.",
@@ -117,8 +117,9 @@
                     numerodochaci: {
                         required: "Campo Modelo é obrigatório.",
                         minlength: "Campo Número de Chassi deve ter pelo menos 10 caracteres.",
-                        number: "Campo Placa deve conter apenas números"
+                        number: "Campo Número de chassi é permitido apenas números"
                     },
+                       
                     tipo: {
                         required:"Campo Marca é obrigatório.",
                         minlength: "Campo Modelo deve ter pelo menos 2 caracteres."
@@ -130,18 +131,21 @@
                     capacidade: {
                         required:"Campo Capacidade é obrigatório.",
                         minlength: "Campo Capacidade deve ter no máximo 1 caractere.",
-                        number: "Campo Capacidade deve conter apenas números"
+                        number: "Campo Capacidade é permitido apenas números"
+                       
                     },
                     portamala: {
                         required:"Campo Porta-mala é obrigatório.",
-                        minlength: "Campo Porta-mala deve ter pelo menos 2 caracteres."
+                        minlength: "Campo Porta-mala deve ter pelo menos 2 caracteres.",
+                        number: "Campo Porta-Mala é permitido apenas números"
                     },
                     kmatual: {
                         required:"Campo Km atual é obrigatório.",
-                        minlength: "Campo Km atual deve ter pelo menos 2 caracteres."
+                        minlength: "Campo Km atual deve ter pelo menos 2 caracteres.",
+                        number: "Campo Km atual é permitido apenas números"
                     },
                 }
-            });
+         });
         });
     </script>
 </body>
