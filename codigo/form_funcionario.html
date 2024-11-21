@@ -3,82 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Funcionário</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
     <script src="./js/jquery.mask.min.js"></script>
-    <link rel="stylesheet" href="">
 </head>
 <body>
-    <form id="formulario" action="inserir_funcionario.php">
-        Nome Funcionario: <br>
-        <input type="text" name="nome_funcionario" id="nome_funcionario"> <br><br>
-        CPF:
-        <input type="text" name="cpf_funcionario" id="cpf_funcionario"> <br><br>
-        Telefone:
-        <input type="text" name="telefone_funcionario" id="telefone_funcionario"> <br><br>
-        Senha: <br>
-    <input type="text" name="senhaa" id="senhaa">
-    <br>
-        <input type="submit" value="Salvar">
-    </form>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Cadastro de Funcionário</h2>
+        
+        <form id="formulario" action="inserir_funcionario.php" class="row g-3">
+            <div class="col-md-6">
+                <label for="nome_funcionario" class="form-label">Nome Funcionário:</label>
+                <input type="text" name="nome_funcionario" id="nome_funcionario" class="form-control">
+            </div>
+            
+            <div class="col-md-6">
+                <label for="cpf_funcionario" class="form-label">CPF:</label>
+                <input type="text" name="cpf_funcionario" id="cpf_funcionario" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+                <label for="telefone_funcionario" class="form-label">Telefone:</label>
+                <input type="text" name="telefone_funcionario" id="telefone_funcionario" class="form-control">
+            </div>
+
+            <div class="col-md-6">
+                <label for="senhaa" class="form-label">Senha:</label>
+                <input type="text" name="senhaa" id="senhaa" class="form-control">
+            </div>
+
+            <div class="col-12 text-center">
+                <input type="submit" value="Salvar" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+
     <script>
         $(document).ready(function () {
+            // Máscaras
             $('#cpf_funcionario').mask('000.000.000-00');
             $('#telefone_funcionario').mask('(00) 0 0000-0000');
+
+            // Validação do formulário
             $("#formulario").validate({
                 rules: {
                     nome_funcionario: {
                         required: true,
                         minlength: 2,
                     },
-                    
                     cpf_funcionario: {
                         required: true,
-                        minlength: 11,
-                        // number: true
+                        minlength: 14, // CPF com máscara
                     },
                     telefone_funcionario: {
                         required: true,
-                        minlength: 11, 
-                        // maxlength:11,
-                        // number: true                 
-                     },
-
-                      
+                        minlength: 15, // Telefone com máscara
+                    },
                     senhaa: {
                         required: true,
                         maxlength: 10,
-                  
-                }
-        
-                   
+                    }
                 },
                 messages: {
                     nome_funcionario: {
                         required: "Campo nome é obrigatório.",
-                        minlength: "O nome deve ter pelo menos 3 caracteres."
+                        minlength: "O nome deve ter pelo menos 2 caracteres."
                     },
                     cpf_funcionario: {
-                        required: "Campo cpf é obrigatório.",
-                        minlength: "O cpf deve ter 11 numeros.",
-                        number:" digite somente numeros"
+                        required: "Campo CPF é obrigatório.",
+                        minlength: "O CPF deve ter 14 caracteres.",
                     },
                     telefone_funcionario: {
-                        required: "Confirme o telefone.",
-                        equalTo: "O numero de telefone esta incorreto.",
-                        number:" digite somente numeros"
-                        
+                        required: "Campo telefone é obrigatório.",
+                        minlength: "O telefone deve ter pelo menos 15 caracteres.",
                     },
                     senhaa: {
-                        required: "Campo cpf é obrigatório para efetuar o login.",
+                        required: "Campo senha é obrigatório.",
                         maxlength: "A senha deve ter no máximo 10 caracteres.",
-                       
                     }
-                   
                 }
             });
         });
     </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

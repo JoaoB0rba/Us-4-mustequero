@@ -9,12 +9,17 @@ require_once "operacoes.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selecionar Carros para Aluguel</title>
+    <!-- Incluindo o CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <h2>Selecione os Carros para Alugar</h2>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Selecione os Carros para Alugar</h2>
+    
     <form action="session3.php" method="post">
-        <table border="1">
-            <thead>
+        <table class="table table-bordered">
+            <thead class="table-dark">
                 <tr>
                     <th>Selecionar</th>
                     <th>ID</th>
@@ -32,12 +37,8 @@ require_once "operacoes.php";
             </thead>
             <tbody>
                 <?php
-
-
-                
                 $carrosDisponiveis = listarCarrosN($conexao);
 
-                
                 foreach ($carrosDisponiveis as $carro): ?>
                 <tr>
                     <td><input type="checkbox" name="carros[]" value="<?php echo $carro['idtb_veiculo']; ?>"></td>
@@ -57,11 +58,17 @@ require_once "operacoes.php";
             </tbody>
         </table>
 
-
-        <button type="submit">Alugar Carros Selecionados</button>
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary">Alugar Carros Selecionados</button>
+        </div>
     </form>
-    <a href="form_aluguel2.php">
-        <button>Voltar</button>
-    </a>
+
+    <div class="d-flex justify-content-center mt-3">
+        <a href="form_aluguel2.php" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>
+
+<!-- Incluindo o JS do Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
