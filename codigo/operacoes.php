@@ -30,49 +30,97 @@ function salvarPF($conexao, $cpf, $cnh, $nome, $tipo, $telefone)
 
     $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
 
+    /**
+     * @var string @sql
+     */
     $sql = "INSERT INTO tb_pessoa_fisica (cpf, cnh, tb_pessoas_idpessoas) VALUES (?, ?, ?)";
 
+
+    /**
+     * @var mysqli_stmt $stmt
+     */
     $stmt = mysqli_prepare($conexao, $sql);
 
+    /** Monta os parâmetros do sql */
     mysqli_stmt_bind_param($stmt, "ssi", $cpf, $cnh, $idPessoa);
 
+    /** Executa o sql */
     mysqli_stmt_execute($stmt);
 
+    /** Fecha a conexão com o banco */
     mysqli_stmt_close($stmt);
 
 }
 
+
+ /**
+  * salvarPJ
+  * @param [MYSQLI]     $conexao    contem dados do DB
+  * @param [INT]        $cnpj       cnpj da pessoa juridica selecionada 
+  * @param [VARCHAR]    $nome       nome da pessoa selecionada 
+  * @param [VARCHAR]    $tipo       tipo selecionada
+  * @param [VARCHAR]    $telefone   telefone da pessoa juridica 
+  * @return void
+  */
 function salvarPJ($conexao, $cnpj, $nome, $tipo, $telefone)
 {
 
     $idPessoa = salvarpessoa($conexao, $nome, $tipo, $telefone);
 
+    /**
+     * @var string @sql
+     */
     $sql = "INSERT INTO tb_pessoa_juridica (cnpj, tb_pessoas_idpessoas) VALUES (?, ?)";
 
+    /**
+     * @var mysqli_stmt $stmt
+     */
     $stmt = mysqli_prepare($conexao, $sql);
 
+    /** Monta os parâmetros do sql */
     mysqli_stmt_bind_param($stmt, "si", $cnpj, $idPessoa);
 
+    /** Executa o sql */
     mysqli_stmt_execute($stmt);
 
+    /** Fecha a conexão com o banco */
     mysqli_stmt_close($stmt);
 
 }
 
+
+/**
+  * salvarPJ
+  * @param [MYSQLI]     $conexao    contem dados do DB
+  * @param [VARCHAR]    $nome       nome da pessoa selecionada 
+  * @param [VARCHAR]    $tipo       se a pessoa e fisica ou juridica 
+  * @param [VARCHAR]    $telefone   telefone da pessoa
+  * @return void
+  */
 function salvarpessoa($conexao, $nome, $tipo, $telefone)
 {
+    /**
+     * @var string @sql 
+     */
     $sql = "INSERT INTO tb_pessoas (nome, tipo, telefone) VALUES (?, ?, ?)";
 
+    /**
+     * @var mysqli_stmt $stmt 
+     */
     $stmt = mysqli_prepare($conexao, $sql);
 
+    /** Monta os parâmetros do sql */
     mysqli_stmt_bind_param($stmt, "sss", $nome, $tipo, $telefone);
 
+    /** Executa o sql */
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
 
+    /** Fecha a conexão com o banco */
     mysqli_stmt_close($stmt);
 
+    /** Retorna o id selecionado */
     return $id;
 
 }
@@ -384,7 +432,7 @@ function listarAluguelCliente($conexao, $cliente) {
 
 
 function listarVeiculosAluguel($conexao, $idaluguel) {
-    $sql = "SELECT tb_veiculo_idtb_veiculo, kminicial FROM tb_aluguel_has_tb_veiculo WHERE tb_aluguel_idtb_aluguel = ?";
+        $sql = "SELECT tb_veiculo_idtb_veiculo, kminicial FROM tb_aluguel_has_tb_veiculo WHERE tb_aluguel_idtb_aluguel = ?";
 
     $stmt = mysqli_prepare($conexao, $sql);
 

@@ -11,7 +11,7 @@
 
     <div class="container mt-5">
         <h2 class="text-center">Selecione o Tipo de Cliente</h2>
-        <form action="pags1.php" method="post">
+        <form action="pags1.php" method="GET">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="tipocliente" value="pf" id="pf">
                 <label class="form-check-label" for="pf">
