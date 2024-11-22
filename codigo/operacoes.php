@@ -384,7 +384,7 @@ function listarAluguelCliente($conexao, $cliente) {
 
 
 function listarVeiculosAluguel($conexao, $idaluguel) {
-    $sql = "SELECT tb_veiculo_idtb_veiculo, kminicial FROM tb_aluguel_has_tb_veiculo WHERE tb_aluguel_idtb_aluguel = ?";
+        $sql = "SELECT tb_veiculo_idtb_veiculo, kminicial FROM tb_aluguel_has_tb_veiculo WHERE tb_aluguel_idtb_aluguel = ?";
 
     $stmt = mysqli_prepare($conexao, $sql);
 
