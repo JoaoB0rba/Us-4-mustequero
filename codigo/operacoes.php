@@ -6,7 +6,7 @@
  * 
  * @author Pedro <pedrohenriquereisferreira123@gmail.com>
  * @author Yuri <email@email.com>
- * @author Ana Caroline <email@email.com>
+ * @author Ana Carolini <email@email.com>
  * @author João <email@email.com>
  * 
  * @requires session
@@ -122,6 +122,22 @@ function listarCarros($conexao)
 }
 
 
+function listarpessoa($conexao)
+ {
+     $sql = "SELECT * FROM tb_veiculo";
+     $stmt = mysqli_prepare($conexao, $sql);
+     mysqli_stmt_execute($stmt);
+     mysqli_stmt_bind_result($stmt, $idtb_veiculo, $marca_veiculo, $placa_veiculo, $modelo_veiculo,$numero_chaci_veiculo,$tipo_veiculo,$cor_veiculo,$capacidade_veiculo,$porta_mala_veiculo,$alugado_veiculo,$km_atual);
+     mysqli_stmt_store_result($stmt);
+     $lista = [];
+     if (mysqli_stmt_num_rows($stmt) > 0) {
+         while (mysqli_stmt_fetch($stmt)) {
+             $lista[] = [$idtb_veiculo, $marca_veiculo, $placa_veiculo, $modelo_veiculo,$numero_chaci_veiculo,$tipo_veiculo,$cor_veiculo,$capacidade_veiculo,$porta_mala_veiculo,$alugado_veiculo,$km_atual];
+        }
+    }
+    mysqli_stmt_close($stmt);
+    return $lista;
+}
 
 function efetuarPagamento($conexao, $tipo, $preco_pagamento, $valor_valorkm, $tb_aluguel_idtb_aluguel) {
     $sql = "INSERT INTO tb_pagamento (tipo_pagamento, preco_pagamento, valor_valorkm, tb_aluguel_idtb_aluguel) VALUES (?, ?, ?, ?)";

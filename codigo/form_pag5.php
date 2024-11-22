@@ -119,12 +119,16 @@ echo "</ul>";
     // Adiciona ao valor total
     //=$valorTotal += $valorVeiculo;
 
+<<<<<<< Updated upstream
     // ================Atualiza a quilometragem atual do veículo
     //=atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
+=======
+    // Atualiza a quilometragem atual do veículo
+    // =atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
+>>>>>>> Stashed changes
 
     // Deletar o registro do veículo no aluguel
     // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
-
 //=}
     //=efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
 
