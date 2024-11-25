@@ -17,3 +17,4 @@
 CORRIGIR:
    botao voltar do pagamento ta indo pra form_aluguel
    fpdf exemplo5 do lucas
+   form_aluguel4.php arrumar os dados que aparece, fazer apareccer os dados com nome certim
