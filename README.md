@@ -1,4 +1,4 @@
-- pagar todos carros obrigatoriamente  - YURI
+- pagar todos carros obrigatoriamente - OK - YURI
 - cálculo do pagamento com jquery  - CAROL
 - relatório no final do pagamento - PEDRO
 - editar em alguma tabela (bora escolher uma facil) -JOAO PAULO
@@ -8,8 +8,7 @@
 - criar novas paginas:
    -listar , editar:
         *funcionario
-        *fisica
-        *juridica
+        *juridica / fisica (tentar juntar o listar dos 2)
         *veiculo
         *aluguel
         *pagamento

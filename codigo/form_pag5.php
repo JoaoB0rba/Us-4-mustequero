@@ -48,25 +48,12 @@ foreach ($veiculosSelecionados as $idVeiculo) {
     // Atualiza a quilometragem atual do veículo
     atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
 
-<<<<<<< Updated upstream
-    // Atualiza a quilometragem atual do veículo
-    // =atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
-
-    // Deletar o registro do veículo no aluguel
-    // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
-//=}
-    //=efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
-
-// Exibe o valor total
-//=echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";
-=======
     // Deleta o registro do veículo no aluguel
     // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
 }
 
 // Efetua o pagamento
 efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
->>>>>>> Stashed changes
 
 // Atualiza o status dos veículos para 'não alugados'
 atualiza_nao_alugado($conexao, $veiculosSelecionados);
@@ -74,4 +61,16 @@ atualiza_nao_alugado($conexao, $veiculosSelecionados);
 // Exibe o valor total
 echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="telainicial.html" class="botao">Ir para a Página Inicial</a>
+</body>
+</html>
 
