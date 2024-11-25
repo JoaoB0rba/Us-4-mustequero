@@ -268,6 +268,29 @@ function listarFuncionario($conexao)
     return $lista;
 }
 
+
+
+function listarFuncionarios($conexao) {
+    $sql = "SELECT idtb_funcionario, nome_funcionario, cpf_funcionario, telefone_funcionario FROM tb_funcionario";
+    $resultado = mysqli_query($conexao, $sql);
+
+    // Verifica se a consulta foi bem-sucedida
+    if (!$resultado) {
+        die("Erro na consulta: " . mysqli_error($conexao));
+    }
+
+    $funcionarios = [];
+    // Percorre os resultados e os armazena em um array
+    while ($funcionario = mysqli_fetch_assoc($resultado)) {
+        $funcionarios[] = $funcionario;
+    }
+
+    return $funcionarios; // Retorna o array com os funcionários
+}
+
+
+
+
 function listarCliente($conexao, $tipocliente)
 {
     // $sql = "SELECT * FROM tb_pessoas WHERE tipo = ?" PERGUNTAR PRO PROFESSOR COMO FAZ DESSE JEITO COM "?";

@@ -1,8 +1,8 @@
 <?php
 // Inclua as bibliotecas necessárias
-require_once './tcpdf/tcpdf.php';
-require_once '../conexao.php';
-require_once '../operacoes.php';
+require_once 'TCPDF-main/tcpdf.php';
+require_once 'conexao.php';
+require_once 'operacoes.php';
 
 // Instancia o objeto TCPDF
 $pdf = new TCPDF();
