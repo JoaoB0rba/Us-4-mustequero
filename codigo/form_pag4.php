@@ -16,11 +16,14 @@ $idaluguel = $_GET['idaluguel'];
 </head>
 <body>
     <h2>Lançar pagamento</h2>
-    <form id="pag4" action="form_pag5.php" method="POST">
+    <form id="pag4" method="GET">
     <input type="hidden" name="idaluguel" value="<?php echo $idaluguel; ?>">
 
     Preço por KM: <br>
     <input type="text" name="precokm" id="precokm" required><br>
+
+    Valor Total:
+    <input type="text" name="valorTotal" id="valorTotal" disabled><br>
 
     Método pagamento: <br>
     <select name="tipopag">
@@ -55,7 +58,6 @@ $idaluguel = $_GET['idaluguel'];
      
     <script>
         $(document).ready(function () {
-            
             $("#pag4").validate({
                 rules: {
                     precokm: {
@@ -74,18 +76,51 @@ $idaluguel = $_GET['idaluguel'];
                     precokm: {
                         required: "Campo preço do km é obrigatório.",
                         minlength: "O nome deve ter pelo menos 1 caracteres.",
-                         number:" digite somente numeros"
+                        number:" digite somente numeros"
                     },
                     kmfinal: {
                         required: "Campo km final é obrigatório.",
                         minlength: "O km final deve ter no minimo 2 numeros.",
                         number:" digite somente numeros"
                     },
-                   
-                   
                 }
             });
         });
     </script>
+
+    <!-- Passa os dados para o JavaScript-->
+    <script>
+        const precokm =  json_encode($precokm); 
+        const kmIniciais =  json_encode($kmIniciais);
+        const kmFinais =  json_encode($kmfinais); 
+        const veiculosSelecionados = echo json_encode($veiculosSelecionados); 
+    </script>
+
+    <!-- JavaScript para calcular o valor total -->
+    <script>
+        // Inicializa o valor total
+        let valorTotal = 0;
+
+        // Itera sobre os veículos selecionados
+        veiculosSelecionados.forEach((idVeiculo) => {
+            // Obtém os valores de quilometragem inicial e final
+            const kmInicial = parseFloat(kmIniciais[idVeiculo] || 0); // Evita erros com valores indefinidos
+            const kmFinal = parseFloat(kmFinais[idVeiculo] || 0);
+
+            // Calcula a distância percorrida
+            const distancia = kmFinal - kmInicial;
+
+            // Verifica se a distância é válida (não negativa)
+            if (distancia > 0) {
+                // Calcula o valor para o veículo e adiciona ao total
+                const valor = distancia * precokm;
+                valorTotal += valor;
+            }
+        });
+
+        // Exibe o resultado na página
+        document.body.innerHTML += `<h3>Total a pagar: R$ ${valorTotal.toFixed(2).replace(".", ",")}</h3>`;
+    </script>
+
 </body>
 </html>

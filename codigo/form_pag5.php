@@ -36,41 +36,37 @@ foreach ($veiculosSelecionados as $idVeiculo) {
 }
 echo "</ul>";
 
-// Cálculo do valor total
-$valorTotal = 0;
-foreach ($veiculosSelecionados as $idVeiculo) {
-    $kmInicial = $kmIniciais[$idVeiculo];
-    $kmFinal = $kmfinais[$idVeiculo];
-    $distanciaPercorrida = $kmFinal - $kmInicial;
-    $valorVeiculo = $distanciaPercorrida * $precokm;
-    $valorTotal += $valorVeiculo;
-
-    // Atualiza a quilometragem atual do veículo
-    atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
-
-    // Deleta o registro do veículo no aluguel
-    // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
-}
-
-// Efetua o pagamento
-efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
-
-// Atualiza o status dos veículos para 'não alugados'
-atualiza_nao_alugado($conexao, $veiculosSelecionados);
-
-// Exibe o valor total
-echo "<p><strong>Total a pagar:</strong> R$ " . number_format($valorTotal, 2, ',', '.') . "</p>";
+// Passa os dados para o JavaScript
+echo "<script>
+    const precokm = $precokm;
+    const kmIniciais = " . json_encode($kmIniciais) . ";
+    const kmFinais = " . json_encode($kmfinais) . ";
+    const veiculosSelecionados = " . json_encode($veiculosSelecionados) . ";
+</script>";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="telainicial.html" class="botao">Ir para a Página Inicial</a>
-</body>
-</html>
+<!-- JavaScript para calcular o valor total -->
+<script>
+    // Inicializa o valor total
+    let valorTotal = 0;
 
+    // Itera sobre os veículos selecionados
+    veiculosSelecionados.forEach((idVeiculo) => {
+        // Obtém os valores de quilometragem inicial e final
+        const kmInicial = parseFloat(kmIniciais[idVeiculo] || 0); // Evita erros com valores indefinidos
+        const kmFinal = parseFloat(kmFinais[idVeiculo] || 0);
+
+        // Calcula a distância percorrida
+        const distancia = kmFinal - kmInicial;
+
+        // Verifica se a distância é válida (não negativa)
+        if (distancia > 0) {
+            // Calcula o valor para o veículo e adiciona ao total
+            const valor = distancia * precokm;
+            valorTotal += valor;
+        }
+    });
+
+    // Exibe o resultado na página
+    document.body.innerHTML += `<h3>Total a pagar: R$ ${valorTotal.toFixed(2).replace(".", ",")}</h3>`;
+</script>
