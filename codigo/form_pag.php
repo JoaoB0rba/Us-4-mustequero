@@ -34,7 +34,7 @@
         </form>
 
         <div class="mt-3 text-center">
-            <a href="index.html" class="btn btn-secondary">Voltar</a>
+            <a href="teladeinicial.html" class="btn btn-secondary">Voltar</a>
         </div>
     </div>
 
