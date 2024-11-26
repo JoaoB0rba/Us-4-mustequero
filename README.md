@@ -18,3 +18,14 @@ CORRIGIR:
    rever validaçao de pessoa fisica (numero de telefone entre outros ta errado)
    form_aluguel4.php tirar os numero e colocar os nomes certinhos de tipo de cliente, cliente e carros selecionados
    arrumar pagamento
+
+
+
+   pdf:
+
+   funcio ---OK
+   veiculo---OK
+   pessoa ju
+   pessoa fi
+   aluguel ---OK
+   pagamento
