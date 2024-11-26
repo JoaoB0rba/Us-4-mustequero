@@ -23,7 +23,8 @@ $idaluguel = $_GET['idaluguel'];
     <input type="text" name="precokm" id="precokm" required><br>
 
     Valor Total:
-    <input type="text" name="valorTotal" id="valorTotal" disabled><br>
+    <input type="text" name="valorTotal" id="valorTotal" di
+    sabled><br>
 
     Método pagamento: <br>
     <select name="tipopag">
