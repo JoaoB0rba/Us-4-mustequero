@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conexao, $sql)) {
         // header("Location: listar_funcionarios.php"); // Redireciona após sucesso (caso tenha uma página de listagem de funcionários)
+        header("Location: pesquisar_vendedor.php?status=sucesso");
         echo "Funcionário atualizado com sucesso.";
     } else {
         echo "Erro ao atualizar funcionário. Tente novamente.";
