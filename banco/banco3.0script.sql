@@ -110,10 +110,10 @@ ENGINE = InnoDB;
 -- Table `bancoveiculos`.`tb_pessoa_juridica`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bancoveiculos`.`tb_pessoa_juridica` (
-  `idpessoa juridica` INT NOT NULL AUTO_INCREMENT,
+  `idpessoa_juridica` INT NOT NULL AUTO_INCREMENT,
   `cnpj` VARCHAR(45) NOT NULL,
   `tb_pessoas_idpessoas` INT NOT NULL,
-  PRIMARY KEY (`idpessoa juridica`),
+  PRIMARY KEY (`idpessoa_juridica`),
   INDEX `fk_tb_pessoa_juridica_tb_pessoas1_idx` (`tb_pessoas_idpessoas` ASC) VISIBLE,
   CONSTRAINT `fk_tb_pessoa_juridica_tb_pessoas1`
     FOREIGN KEY (`tb_pessoas_idpessoas`)
@@ -127,11 +127,11 @@ ENGINE = InnoDB;
 -- Table `bancoveiculos`.`tb_pessoa_fisica`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bancoveiculos`.`tb_pessoa_fisica` (
-  `idpessoa fisica` INT NOT NULL AUTO_INCREMENT,
+  `idpessoa_fisica` INT NOT NULL AUTO_INCREMENT,
   `cpf` VARCHAR(45) NOT NULL,
   `cnh` VARCHAR(45) NOT NULL,
   `tb_pessoas_idpessoas` INT NOT NULL,
-  PRIMARY KEY (`idpessoa fisica`),
+  PRIMARY KEY (`idpessoa_fisica`),
   INDEX `fk_tb_pessoa_fisica_tb_pessoas1_idx` (`tb_pessoas_idpessoas` ASC) VISIBLE,
   CONSTRAINT `fk_tb_pessoa_fisica_tb_pessoas1`
     FOREIGN KEY (`tb_pessoas_idpessoas`)
