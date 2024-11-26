@@ -52,13 +52,13 @@
                         required: true,
                         minlength: 14, // Para máscara de telefone
                         maxlength: 15, 
-                        number: true
+                        digit: true
                     },
                     cnpj: {
                         required: true,
                         minlength: 18, // Para máscara de CNPJ
                         maxlength: 18, 
-                        number: true
+                        digit: true
                     },
                 },
                 messages: {
@@ -70,13 +70,13 @@
                         required: "Campo telefone é obrigatório.",
                         minlength: "O telefone deve ter pelo menos 14 caracteres.",
                         maxlength: "Telefone deve ter no máximo 15 caracteres.",
-                        number: "Somente números são permitidos"
+                        digit: "Somente números são permitidos"
                     },
                     cnpj: {
                         required: "Campo CNPJ é obrigatório.",
                         minlength: "O CNPJ deve ter 14 caracteres.",
                         maxlength: "CNPJ deve ter no máximo 18 caracteres.",
-                        number: "Somente números são permitidos"
+                        digit: "Somente números são permitidos"
                     },
                 }
             });

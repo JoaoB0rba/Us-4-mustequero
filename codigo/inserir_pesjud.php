@@ -9,9 +9,9 @@
 require_once "conexao.php";
 require_once "operacoes.php";
 
-$nome = $_GET['nome'];
-$telefone = $_GET['telefone'];
-$cnpj = $_GET['cnpj'];
+$nome = $_REQUEST['nome'];
+$telefone = $_REQUEST['telefone'];
+$cnpj = $_REQUEST['cnpj'];
 
 $tipo = 'pj';
 
