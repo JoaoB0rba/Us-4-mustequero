@@ -70,7 +70,8 @@
             ?>
         </tbody>
     </table>
-    <a href="pdf_pessoa_fisica.php" class="btn btn-secondary">Gerar PDF</a>
+    <a href="pdf_pessoafi.php" class="btn btn-secondary">Gerar PDF</a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 
