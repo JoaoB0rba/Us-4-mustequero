@@ -19,13 +19,58 @@ CORRIGIR:
    form_aluguel4.php tirar os numero e colocar os nomes certinhos de tipo de cliente, cliente e carros selecionados
    arrumar pagamento
 
+http://localhost:8080/telainicial.html
+
+*listar funcionario
+   -pesquisa : ARRUMAR
+   -editar : OK
+      validaçao : OK
+   -excluir : OK
+   -pdf : OK
 
 
-   pdf:
 
-   funcio ---OK
-   veiculo---OK
-   pessoa ju --OK
-   pessoa fi --OK
-   aluguel ---OK
-   pagamento
+*listar veiculo
+   -pesquisa : ARRUMAR
+   -editar :
+      validaçao :
+   -excluir :
+   -pdf :
+
+
+
+*listar pessoa fisica
+   -pesquisa :
+   -editar :
+      validaçao :
+   -excluir :
+   -pdf :
+
+
+
+*listar pessoa juridica
+   -pesquisa :
+   -editar :
+      validaçao :
+   -excluir :
+   -pdf :
+
+
+
+*listar alugueis
+   -pesquisa :
+   -editar :
+      validaçao :
+   -excluir :
+   -pdf :
+
+
+
+*listar pagamentos
+   -pesquisa :
+   -editar :
+      validaçao :
+   -excluir :
+   -pdf :
+
+
