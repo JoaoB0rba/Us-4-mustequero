@@ -5,12 +5,12 @@ require_once "operacoes.php";
 session_start();
 
 // Captura os dados enviados pelo formulário
-$idaluguel = $_POST['idaluguel'];
-$precokm = $_POST['precokm'];
-$tipopag = $_POST['tipopag'];
-$kmfinais = $_POST['kmfinal']; // Quilometragem final (array)
-$kmIniciais = $_POST['km_inicial']; // Quilometragem inicial (array)
-$veiculosSelecionados = explode(',', $_POST['veiculos']); // IDs dos veículos como array
+$idaluguel = $_GET['idaluguel'];
+$precokm = $_GET['precokm'];
+$tipopag = $_GET['tipopag'];
+$kmfinais = $_GET['kmfinal']; // Quilometragem final (array)
+$kmIniciais = $_GET['km_inicial']; // Quilometragem inicial (array)
+$veiculosSelecionados = explode(',', $_GET['veiculos']); // IDs dos veículos como array
 
 // Armazena os dados na sessão
 $_SESSION['idaluguel'] = $idaluguel;

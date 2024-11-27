@@ -10,27 +10,12 @@ $idaluguel = $_GET['idaluguel'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lançar Pagamento</title>
+
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/jquery.validate.min.js"></script>
-    <script src="./js/jquery.mask.min.js"></script>
 </head>
 <body>
     <h2>Lançar pagamento</h2>
-    <form id="pag4" method="GET">
-    <input type="hidden" name="idaluguel" value="<?php echo $idaluguel; ?>">
-
-    Preço por KM: <br>
-    <input type="text" name="precokm" id="precokm" required><br>
-
-    Valor Total:
-    <input type="text" name="valorTotal" id="valorTotal" disabled><br>
-
-    Método pagamento: <br>
-    <select name="tipopag">
-        <option value="Dinheiro">Dinheiro</option>
-        <option value="Cartão">Cartão</option>
-        <option value="Pix">Pix</option>
-    </select><br>
     
     <h4>Carros</h4>
     <hr>
@@ -53,6 +38,21 @@ $idaluguel = $_GET['idaluguel'];
     // Serializa os IDs dos veículos em um campo oculto
     echo "<input type='hidden' name='veiculos' value='" . implode(',', $veiculos) . "'>";
     ?>
+     <form id="pag4" method="GET">
+    <input type="hidden" name="idaluguel" value="<?php echo $idaluguel; ?>">
+
+    Preço por KM: <br>
+    <input type="text" name="precokm" id="precokm" required><br>
+
+    Valor Total:
+    <input type="text" name="valorTotal" id="valorTotal" disabled><br>
+
+    Método pagamento: <br>
+    <select name="tipopag">
+        <option value="Dinheiro">Dinheiro</option>
+        <option value="Cartão">Cartão</option>
+        <option value="Pix">Pix</option>
+    </select><br>
     <input type="submit" value="Lançar pagamento">
 </form>
      
@@ -112,10 +112,26 @@ $idaluguel = $_GET['idaluguel'];
         }
     });
 
-    // Exibe o resultado na página
-    document.body.innerHTML += `<h3>Total a pagar: R$ ${valorTotal.toFixed(2).replace(".", ",")}</h3>`;
 </script>
 
+<?php
+ // Atualiza a quilometragem atual do veículo
+ atualiza_km_atual($conexao, $kmFinal, $idVeiculo);
+
+
+ // Deleta o registro do veículo no aluguel
+ // deletar_veiculo_aluguel($conexao, $idaluguel, $idVeiculo);
+
+
+
+// Efetua o pagamento
+efetuarPagamento($conexao, $tipopag, $valorTotal, $precokm, $idaluguel);
+
+
+// Atualiza o status dos veículos para 'não alugados'
+atualiza_nao_alugado($conexao, $veiculosSelecionados);
+
+?>
 
 </body>
 </html>
