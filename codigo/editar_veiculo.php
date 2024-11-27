@@ -12,7 +12,6 @@ if (isset($_GET['idtb_veiculo'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,45 +24,53 @@ if (isset($_GET['idtb_veiculo'])) {
     <script src="./js/jquery.validate.min.js"></script>
     <script src="./js/jquery.mask.min.js"></script>
 </head>
-
 <body>
     <div class="container mt-5">
         <h2>Editar Veículo</h2>
 
         <form id="editarVeiculo" action="atualizar_veiculo.php" method="post">
             <input type="hidden" name="idtb_veiculo" value="<?= $idtb_veiculo ?>">
+            
             <div class="mb-3">
                 <label for="marca_veiculo" class="form-label">Marca</label>
                 <input type="text" id="marca_veiculo" name="marca_veiculo" class="form-control" value="<?= $linha['marca_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="placa_veiculo" class="form-label">Placa</label>
                 <input type="text" id="placa_veiculo" name="placa_veiculo" class="form-control" value="<?= $linha['placa_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="modelo_veiculo" class="form-label">Modelo</label>
                 <input type="text" id="modelo_veiculo" name="modelo_veiculo" class="form-control" value="<?= $linha['modelo_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="numero_chaci_veiculo" class="form-label">Número do Chassi</label>
                 <input type="text" id="numero_chaci_veiculo" name="numero_chaci_veiculo" class="form-control" value="<?= $linha['numero_chaci_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="tipo_veiculo" class="form-label">Tipo</label>
                 <input type="text" id="tipo_veiculo" name="tipo_veiculo" class="form-control" value="<?= $linha['tipo_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="cor_veiculo" class="form-label">Cor</label>
                 <input type="text" id="cor_veiculo" name="cor_veiculo" class="form-control" value="<?= $linha['cor_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="capacidade_veiculo" class="form-label">Capacidade</label>
-                <input type="text" id="capacidade_veiculo" name="capacidade_veiculo" class="form-control" value="<?= $linha['capacidade_veiculo'] ?>" required>
+                <input type="number" id="capacidade_veiculo" name="capacidade_veiculo" class="form-control" value="<?= $linha['capacidade_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="porta_mala_veiculo" class="form-label">Porta-Mala</label>
                 <input type="text" id="porta_mala_veiculo" name="porta_mala_veiculo" class="form-control" value="<?= $linha['porta_mala_veiculo'] ?>" required>
             </div>
+            
             <div class="mb-3">
                 <label for="alugado_veiculo" class="form-label">Alugado</label>
                 <select id="alugado_veiculo" name="alugado_veiculo" class="form-control" required>
@@ -71,10 +78,12 @@ if (isset($_GET['idtb_veiculo'])) {
                     <option value="N" <?= $linha['alugado_veiculo'] == 'N' ? 'selected' : '' ?>>Não</option>
                 </select>
             </div>
+            
             <div class="mb-3">
                 <label for="km_atual" class="form-label">Km Atual</label>
                 <input type="text" id="km_atual" name="km_atual" class="form-control" value="<?= $linha['km_atual'] ?>" required>
             </div>
+            
             <button type="submit" class="btn btn-danger">Atualizar</button>
         </form>
     </div>
@@ -111,6 +120,8 @@ if (isset($_GET['idtb_veiculo'])) {
                     },
                     capacidade_veiculo: {
                         required: true,
+                        number: true,
+                        min: 1
                     },
                     porta_mala_veiculo: {
                         required: true
@@ -121,8 +132,6 @@ if (isset($_GET['idtb_veiculo'])) {
                     },
                     alugado_veiculo: {
                         required: true,
-                        minlength: 1,
-                        maxlength: 1,
                         pattern: /^[SN]$/ // Apenas 'S' ou 'N'
                     }
                 },
@@ -155,34 +164,31 @@ if (isset($_GET['idtb_veiculo'])) {
                     },
                     capacidade_veiculo: {
                         required: "Campo Capacidade é obrigatório.",
+                        number: "Digite um número válido.",
+                        min: "A capacidade deve ser maior que 0."
                     },
                     porta_mala_veiculo: {
                         required: "Campo Porta-Mala é obrigatório."
                     },
                     km_atual: {
                         required: "Campo Km Atual é obrigatório.",
-                        number: "Somente números são permitidos no campo Km Atual."
+                        number: "Digite um valor numérico válido."
                     },
                     alugado_veiculo: {
                         required: "Campo Alugado é obrigatório.",
-                        pattern: "Digite apenas 'S' ou 'N'."
+                        pattern: "Escolha uma opção válida ('S' ou 'N')."
                     }
                 }
             });
+
+            // Máscara para o campo KM Atual
+            $('#km_atual').mask('0000000');
         });
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-
 </html>
 
 <?php
-    } else {
-        echo "Veículo não encontrado.";
     }
-} else {
-    echo "ID do veículo não especificado.";
 }
-mysqli_close($conexao);
 ?>

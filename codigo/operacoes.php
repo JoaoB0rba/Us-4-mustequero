@@ -152,14 +152,23 @@ function salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo
 }
 
 function Login($conexao, $nome_funcionario, $senhaa) {
-    $sql = "INSERT INTO tb_funcionario (nome_funcionario, senhaa) VALUES (?, ?)";
-    $stmt = mysqli_prepare($conexao, $sql);
+    // Consulta segura para verificar se o funcionário existe
+    $sql_check = "SELECT * FROM tb_funcionario WHERE nome_funcionario = ? AND senhaa = ?";
+    $stmt_check = mysqli_prepare($conexao, $sql_check);
+    mysqli_stmt_bind_param($stmt_check, "ss", $nome_funcionario, $senhaa);
+    mysqli_stmt_execute($stmt_check);
+    $resultado = mysqli_stmt_get_result($stmt_check);
 
-    mysqli_stmt_bind_param($stmt, "ss", $nome_funcionario, $senhaa);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
+    // Verifica se há resultados
+    if (mysqli_num_rows($resultado) > 0) {
+        mysqli_stmt_close($stmt_check);
+        return true; // Funcionário autenticado
+    } else {
+        mysqli_stmt_close($stmt_check);
+        return false; // Funcionário não encontrado
+    }
 }
+
 
 
 function listarCarros($conexao)

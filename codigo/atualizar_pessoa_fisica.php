@@ -1,36 +1,28 @@
 <?php
 require_once 'conexao.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    // Verificar se todos os dados necessários foram enviados via GET
-    if (isset($_GET['id_pessoas'], $_GET['nome'], $_GET['cpf'], $_GET['telefone'], $_GET['senha'])) {
-        // Receber os dados do formulário via GET
-        $id_pessoas = $_GET['id_pessoas'];
-        $nome = $_GET['nome'];
-        $cpf = $_GET['cpf'];
-        $telefone = $_GET['telefone'];
-        $senha = $_GET['senha']; // Senha (caso queira atualizar)
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Obter os dados do formulário
+    $idpessoa_fisica = $_POST['idpessoa_fisica'];
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $telefone = $_POST['telefone'];
+    $cnh = $_POST['cnh'];
 
-        // Atualizar no banco de dados
-        $sql = "UPDATE pessoa_fisica 
-                SET nome='$nome', 
-                    cpf='$cpf', 
-                    telefone='$telefone',
-                    senha='$senha'
-                WHERE id_pessoa='$id_pessoa'";
+    // Atualizar os dados da tabela tb_pessoas
+    $sql_pessoas = "UPDATE tb_pessoas 
+                    SET nome = '$nome', telefone = '$telefone' 
+                    WHERE idpessoas = (SELECT tb_pessoas_idpessoas FROM tb_pessoa_fisica WHERE idpessoa_fisica = $idpessoa_fisica)";
 
-        if (mysqli_query($conexao, $sql)) {
-            // header("Location: listar_pessoas.php"); // Redireciona após sucesso (caso tenha uma página de listagem de pessoas físicas)
-            header("Location: pesquisar_pessoa.php?status=sucesso");
-            echo "Pessoa física atualizada com sucesso.";
-        } else {
-            echo "Erro ao atualizar pessoa física. Tente novamente.";
-        }
-    } else {
-        echo "Dados do formulário incompletos.";
-    }
-} else {
-    echo "Método inválido de requisição.";
+    // Atualizar os dados da tabela tb_pessoa_fisica
+    $sql_pessoa_fisica = "UPDATE tb_pessoa_fisica 
+                          SET cpf = '$cpf', cnh = '$cnh' 
+                          WHERE idpessoa_fisica = $idpessoa_fisica";
+
+    // Executar as consultas de atualização
+    if (mysqli_query($conexao, $sql_pessoas) && mysqli_query($conexao, $sql_pessoa_fisica)) {
+        header("Location: pesquisar_vendedor.php?status=sucesso");
+}
 }
 
 mysqli_close($conexao);

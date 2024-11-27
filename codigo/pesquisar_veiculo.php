@@ -13,7 +13,7 @@
 
     <form action="pesquisar_veiculo.php" method="get" class="mb-3">
         <div class="input-group">
-            <input type="text" name="busca" class="form-control" placeholder="Pesquisar Veículos">
+            <input type="text" name="busca" class="form-control" placeholder="Pesquisar Veículos" value="<?php echo isset($_GET['busca']) ? $_GET['busca'] : ''; ?>">
             <button type="submit" class="btn btn-primary">Pesquisar</button>
         </div>
     </form>
@@ -40,15 +40,28 @@
             require_once 'conexao.php';
 
             // Verificar se o formulário foi submetido
-            if (isset($_GET['busca'])) {
-                $busca = $_GET['busca'];
-                $sql = "SELECT * FROM tb_veiculo WHERE modelo LIKE '%$busca%' OR marca LIKE '%$busca%'";
+            if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+                $busca = "%" . $_GET['busca'] . "%";
+                // Ajuste os nomes das colunas conforme o banco de dados
+                $sql = "SELECT * FROM tb_veiculo WHERE modelo_veiculo LIKE ? OR marca_veiculo LIKE ?";
+                
+                // Preparar a consulta
+                if ($stmt = mysqli_prepare($conexao, $sql)) {
+                    // Vincular os parâmetros
+                    mysqli_stmt_bind_param($stmt, "ss", $busca, $busca);
+            
+                    // Executar a consulta
+                    mysqli_stmt_execute($stmt);
+            
+                    // Obter o resultado
+                    $resultados = mysqli_stmt_get_result($stmt);
+                }
             } else {
                 // Se não houver busca, seleciona todos os veículos
                 $sql = "SELECT * FROM tb_veiculo";
+                $resultados = mysqli_query($conexao, $sql);
             }
-
-            $resultados = mysqli_query($conexao, $sql);
+            
 
             if (mysqli_num_rows($resultados) > 0) {
                 while ($linha = mysqli_fetch_array($resultados)) {
@@ -84,11 +97,14 @@
                 echo "<tr><td colspan='7'>Nenhum veículo encontrado.</td></tr>";
             }
 
+            // Fechar a conexão
             mysqli_close($conexao);
             ?>
         </tbody>
     </table>
-    <a href="pdf_veiculo.php">PDF</a>
+    <a href="telainicial.html" class="btn btn-secondary">Pagina Inicial</a>
+    <a href="pdf_veiculo.php" class="btn btn-secondary">PDF</a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 

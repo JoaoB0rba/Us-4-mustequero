@@ -27,7 +27,7 @@ http://localhost:8080/telainicial.html
 ----------------------------------------------------LISTAR-----------------------------------------------------
 
 *listar funcionario
-   -pesquisa : ARRUMAR
+   -pesquisa : OK
    -editar : OK
       validaçao : OK
    -excluir : OK
@@ -35,7 +35,7 @@ http://localhost:8080/telainicial.html
 
 
 *listar veiculo
-   -pesquisa : ARRUMAR
+   -pesquisa : OK
    -editar : OK (VAI TOMA NO SEU Cool JOAO PAULO ME PEDE BENÇA DOWAKODKADKAKD)
       validaçao : OK
    -excluir : OK

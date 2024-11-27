@@ -1,26 +1,25 @@
 <?php
-    session_start();
+session_start();
 
-    require_once 'conexao.php';
-    require_once "operacoes.php";
+require_once 'conexao.php';
+require_once "operacoes.php";
 
+if (isset($_POST['nome_funcionario']) && isset($_POST['senhaa'])) {
+    $nome_funcionario = $_POST['nome_funcionario'];
+    $senhaa = $_POST['senhaa'];
+    
 
-    // && é usado para verificar se duas condições são verdadeiras ao mesmo tempo. Se ambas forem verdadeiras, o resultado é true
-    if (isset($_POST['nome_funcionario']) && isset($_POST['senhaa'])) {
-        $nome_funcionario = $_POST['nome_funcionario'];
-        $senhaa = $_POST['senhaa'];
-
-        Login($conexao, $nome_funcionario, $senhaa);
-        $resultados = mysqli_query($conexao, $sql);
-
-        if (mysqli_num_rows($resultados) > 0) {
-            $_SESSION['funcionario_autenticado'] = true;
-
-            header('Location: telainicial.html');
-            exit();
-        } else {
-            header('Location: telainicial.html');
-            exit();
-        }
-    } 
+    if (Login($conexao, $nome_funcionario, $senhaa)) {
+        $_SESSION['funcionario_autenticado'] = true;
+        header('Location: telainicial.html'); // Login bem-sucedido
+        exit();
+    } else {
+        $_SESSION['funcionario_autenticado'] = false;
+        header('Location: erro_login.html'); // Falha na autenticação
+        exit();
+    }
+} else {
+    header('Location: login.html'); // Se campos não foram enviados
+    exit();
+}
 ?>
