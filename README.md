@@ -25,7 +25,7 @@ CORRIGIR:
 
    funcio ---OK
    veiculo---OK
-   pessoa ju
-   pessoa fi
+   pessoa ju --OK
+   pessoa fi --OK
    aluguel ---OK
    pagamento

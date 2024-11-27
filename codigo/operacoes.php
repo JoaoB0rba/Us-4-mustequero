@@ -603,7 +603,29 @@ function listarPessoaJuridica($conexao) {
 
 
 
+function listarPagamentos($conexao) {
+    $query = "SELECT 
+                  pg.idtb_pagamento, 
+                  pg.tipo_pagamento, 
+                  pg.preco_pagamento, 
+                  pg.valor_valorkm, 
+                  al.idtb_aluguel 
+              FROM tb_pagamento pg
+              INNER JOIN tb_aluguel al ON pg.tb_aluguel_idtb_aluguel = al.idtb_aluguel";
 
+    $resultado = mysqli_query($conexao, $query);
+
+    if (!$resultado) {
+        die("Erro na consulta: " . mysqli_error($conexao));
+    }
+
+    $pagamentos = [];
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $pagamentos[] = $row;
+    }
+
+    return $pagamentos;
+}
 
 
 ?>
