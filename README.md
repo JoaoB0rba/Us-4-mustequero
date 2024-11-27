@@ -36,7 +36,7 @@ http://localhost:8080/telainicial.html
 
 *listar veiculo
    -pesquisa : ARRUMAR
-   -editar : OK (VAI TOMA NO SEU Cool JOAO PAULO ME DA BENÇA DOWAKODKADKAKD)
+   -editar : OK (VAI TOMA NO SEU Cool JOAO PAULO ME PEDE BENÇA DOWAKODKADKAKD)
       validaçao : OK
    -excluir : OK
    -pdf : OK
