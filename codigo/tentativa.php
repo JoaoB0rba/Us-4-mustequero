@@ -61,7 +61,7 @@ $idaluguel = $_GET['idaluguel'];
             $(".kmpercorrido").on("input", function () {
                 const kmInicial = parseFloat($(this).closest(".mb-3").find(".km_inicial").text());
                 const kmPercorrido = parseFloat($(this).val()) || 0;
-                const kmFinal = kmInicia + kmPercorrido;
+                const kmFinal = kmInicial + kmPercorrido;
                 $(this).closest(".mb-3").find(".kmFinal").text(kmFinal.toFixed(2));
             });
 

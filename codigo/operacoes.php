@@ -125,11 +125,11 @@ function salvarpessoa($conexao, $nome, $tipo, $telefone)
 
 }
 
-function salvarFuncionario($conexao, $nome, $cpf, $telefone, $senhaa) {
+function salvarFuncionario($conexao, $nome_funcionario, $cpf_funcionario, $telefone_funcionario, $senhaa) {
     $sql = "INSERT INTO tb_funcionario (nome_funcionario, cpf_funcionario, telefone_funcionario, senhaa) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ssss", $nome, $cpf, $telefone, $senhaa);
+    mysqli_stmt_bind_param($stmt, "ssss", $nome_funcionario, $cpf_funcionario, $telefone_funcionario, $senhaa);
     mysqli_stmt_execute($stmt);
 
     $id = mysqli_stmt_insert_id($stmt);
@@ -149,6 +149,16 @@ function salvarVeiculo($conexao, $marca_veiculo, $placa_veiculo, $modelo_veiculo
     mysqli_stmt_close($stmt);
 
     return $id;
+}
+
+function Login($conexao, $nome_funcionario, $senhaa) {
+    $sql = "INSERT INTO tb_funcionario (nome_funcionario, senhaa) VALUES (?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($stmt, "ss", $nome_funcionario, $senhaa);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
 }
 
 

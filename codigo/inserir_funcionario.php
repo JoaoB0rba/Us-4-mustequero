@@ -14,7 +14,6 @@ $cpf_funcionario = $_GET['cpf_funcionario'];
 $telefone_funcionario = $_GET['telefone_funcionario'];
 $senhaa = $_GET['senhaa'];
 
-// Salva os dados do funcionário no banco de dados
 salvarFuncionario($conexao, $nome_funcionario, $cpf_funcionario, $telefone_funcionario, $senhaa);
 
 // Redireciona para a página inicial
