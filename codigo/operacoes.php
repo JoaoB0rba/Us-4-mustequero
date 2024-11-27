@@ -539,5 +539,17 @@ function deletar_veiculo_aluguel($conexao, $idaluguel, $idveiculo) {
     mysqli_stmt_close($stmt);
 }
 
+function listarPessoaFisica($conexao) {
+    $query = "SELECT idtb_pessoa_fisica, nome_pessoa, cpf_pessoa, data_nascimento FROM tb_pessoa_fisica";
+    $result = mysqli_query($conexao, $query);
+
+    $pessoasFisicas = [];
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $pessoasFisicas[] = $row;
+        }
+    }
+    return $pessoasFisicas;
+}
 
 ?>
