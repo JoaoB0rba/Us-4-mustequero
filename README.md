@@ -21,6 +21,11 @@ CORRIGIR:
 
 http://localhost:8080/telainicial.html
 
+
+
+
+----------------------------------------------------LISTAR-----------------------------------------------------
+
 *listar funcionario
    -pesquisa : ARRUMAR
    -editar : OK
@@ -29,48 +34,82 @@ http://localhost:8080/telainicial.html
    -pdf : OK
 
 
-
 *listar veiculo
    -pesquisa : ARRUMAR
-   -editar :
-      validaçao :
-   -excluir :
-   -pdf :
+   -editar : OK (VAI TOMA NO SEU Cool JOAO PAULO ME DA BENÇA DOWAKODKADKAKD)
+      validaçao : OK
+   -excluir : OK
+   -pdf : OK
 
 
 
 *listar pessoa fisica
-   -pesquisa :
-   -editar :
-      validaçao :
-   -excluir :
-   -pdf :
+   -pesquisa : OK
+   -editar : ARRUMAR
+      validaçao : ARRUMAR
+   -excluir : ARRUMAR
+   -pdf : OK
 
 
 
 *listar pessoa juridica
-   -pesquisa :
-   -editar :
-      validaçao :
-   -excluir :
-   -pdf :
+   -pesquisa : OK
+   -editar : ARRUMAR
+      validaçao : ARRUMAR
+   -excluir : ARRUMAR
+   -pdf : OK
 
 
 
-*listar alugueis
-   -pesquisa :
-   -editar :
-      validaçao :
-   -excluir :
-   -pdf :
+*listar alugueis -- nao tem listar alugueis
+   -pesquisa : FAZER
+   -editar : FAZER
+      validaçao : FAZER
+   -excluir : FAZER
+   -pdf : OK
 
 
 
 *listar pagamentos
-   -pesquisa :
-   -editar :
-      validaçao :
-   -excluir :
-   -pdf :
+   -pesquisa : OK
+   -editar : ARRUMAR
+      validaçao : ARRUMAR
+   -excluir : ARRUMAR
+   -pdf : OK
 
 
+
+http://localhost:8080/telainicial.html
+
+----------------------------------------------------CADASTRO-----------------------------------------------------
+
+*cadastro funcionario
+   -insere: OK
+   -validaçao: OK
+
+
+*cadastro veiculo
+   -insere: ok
+   -validaçao: ok
+
+
+*cadastro pessoa fisica
+   -insere: ok
+   -validaçao: ok
+
+
+*cadastro pessoa juridica
+   -insere: ok
+   -validaçao: ok
+
+
+*cadastro aluguel
+   -insere: ok
+   -validaçao: ok
+
+
+*cadastro pagamento
+   -insere: 
+   -validaçao:
+
+   

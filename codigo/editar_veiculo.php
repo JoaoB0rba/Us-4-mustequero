@@ -11,7 +11,7 @@ if (isset($_GET['idtb_veiculo'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -19,60 +19,159 @@ if (isset($_GET['idtb_veiculo'])) {
     <title>Editar Veículo</title>
     <link rel="stylesheet" href="estilo/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- jQuery e Validação -->
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.validate.min.js"></script>
+    <script src="./js/jquery.mask.min.js"></script>
 </head>
 
 <body>
     <div class="container mt-5">
         <h2>Editar Veículo</h2>
 
-        <form action="atualizar_veiculo.php" method="Post">
+        <form id="editarVeiculo" action="atualizar_veiculo.php" method="post">
             <input type="hidden" name="idtb_veiculo" value="<?= $idtb_veiculo ?>">
             <div class="mb-3">
-                <label for="marca_veiculo" class="form-label">marca</label>
-                <input type="text" name="marca_veiculo" class="form-control" value="<?= $linha['marca_veiculo'] ?>" required>
+                <label for="marca_veiculo" class="form-label">Marca</label>
+                <input type="text" id="marca_veiculo" name="marca_veiculo" class="form-control" value="<?= $linha['marca_veiculo'] ?>" required>
             </div>
-            <div class="row g-2">
-                <div class="col-md">
-                    <label for="placa_veiculo" class="form-label">placa</label>
-                    <input type="text" name="placa_veiculo" class="form-control" value="<?= $linha['placa_veiculo'] ?>" required>
-                </div>
             <div class="mb-3">
-                <label for="modelo_veiculo" class="form-label">modelo </label>
-                <input type="text" name="modelo_veiculo" class="form-control" value="<?= $linha['modelo_veiculo'] ?>" required>
+                <label for="placa_veiculo" class="form-label">Placa</label>
+                <input type="text" id="placa_veiculo" name="placa_veiculo" class="form-control" value="<?= $linha['placa_veiculo'] ?>" required>
             </div>
-                <div class="col-md">
-                    <label for="numero_chaci_veiculo " class="form-label">chaci</label>
-                    <input type="text" name="numero_chaci_veiculo " class="form-control" value="<?= $linha['numero_chaci_veiculo'] ?>" required>
-                </div>
-                <div class="col-md">
-                    <label for="tipo_veiculo" class="form-label">tipo veiculo</label>
-                    <input type="text" name="tipo_veiculo" class="form-control" value="<?= $linha['tipo_veiculo'] ?>" required>
-                </div>
-                <div class="col-md">
-                    <label for="cor_veiculo" class="form-label">Cor</label>
-                    <input type="text" name="cor_veiculo" class="form-control" value="<?= $linha['cor_veiculo'] ?>" required>
-                </div>
-                <div class="col-md">
-                    <label for="capacidade_veiculo" class="form-label">Capacidade</label>
-                    <input type="text" name="capacidade_veiculo" class="form-control" value="<?= $linha['capacidade_veiculo'] ?>" required>
-                </div>
-                <div class="col-md">
-                    <label for="porta_mala_veiculo " class="form-label">Porta mala</label>
-                    <input type="text" name="porta_mala_veiculo " class="form-control" value="<?= $linha['porta_mala_veiculo'] ?>" required>
-                </div>
-                <div class="col-md">
-                    <label for="alugado_veiculo" class="form-label">alugado</label>
-                    <input type="text" name="alugado_veiculo" class="form-control" value="<?= $linha['alugado_veiculo'] ?>" required>
-                </div>
-                <div class="col-md">
-                    <label for="km_atual" class="form-label">Km atual</label>
-                    <input type="text" name="km_atual" class="form-control" value="<?= $linha['km_atual'] ?>" required>
-                </div>
+            <div class="mb-3">
+                <label for="modelo_veiculo" class="form-label">Modelo</label>
+                <input type="text" id="modelo_veiculo" name="modelo_veiculo" class="form-control" value="<?= $linha['modelo_veiculo'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="numero_chaci_veiculo" class="form-label">Número do Chassi</label>
+                <input type="text" id="numero_chaci_veiculo" name="numero_chaci_veiculo" class="form-control" value="<?= $linha['numero_chaci_veiculo'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="tipo_veiculo" class="form-label">Tipo</label>
+                <input type="text" id="tipo_veiculo" name="tipo_veiculo" class="form-control" value="<?= $linha['tipo_veiculo'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="cor_veiculo" class="form-label">Cor</label>
+                <input type="text" id="cor_veiculo" name="cor_veiculo" class="form-control" value="<?= $linha['cor_veiculo'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="capacidade_veiculo" class="form-label">Capacidade</label>
+                <input type="text" id="capacidade_veiculo" name="capacidade_veiculo" class="form-control" value="<?= $linha['capacidade_veiculo'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="porta_mala_veiculo" class="form-label">Porta-Mala</label>
+                <input type="text" id="porta_mala_veiculo" name="porta_mala_veiculo" class="form-control" value="<?= $linha['porta_mala_veiculo'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="alugado_veiculo" class="form-label">Alugado</label>
+                <select id="alugado_veiculo" name="alugado_veiculo" class="form-control" required>
+                    <option value="S" <?= $linha['alugado_veiculo'] == 'S' ? 'selected' : '' ?>>Sim</option>
+                    <option value="N" <?= $linha['alugado_veiculo'] == 'N' ? 'selected' : '' ?>>Não</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="km_atual" class="form-label">Km Atual</label>
+                <input type="text" id="km_atual" name="km_atual" class="form-control" value="<?= $linha['km_atual'] ?>" required>
             </div>
             <button type="submit" class="btn btn-danger">Atualizar</button>
         </form>
-
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#editarVeiculo").validate({
+                rules: {
+                    marca_veiculo: {
+                        required: true,
+                        minlength: 2
+                    },
+                    placa_veiculo: {
+                        required: true,
+                        minlength: 7,
+                        maxlength: 7
+                    },
+                    modelo_veiculo: {
+                        required: true,
+                        minlength: 2
+                    },
+                    numero_chaci_veiculo: {
+                        required: true,
+                        minlength: 17,
+                        maxlength: 17
+                    },
+                    tipo_veiculo: {
+                        required: true,
+                        minlength: 2
+                    },
+                    cor_veiculo: {
+                        required: true,
+                        minlength: 2
+                    },
+                    capacidade_veiculo: {
+                        required: true,
+                    },
+                    porta_mala_veiculo: {
+                        required: true
+                    },
+                    km_atual: {
+                        required: true,
+                        number: true
+                    },
+                    alugado_veiculo: {
+                        required: true,
+                        minlength: 1,
+                        maxlength: 1,
+                        pattern: /^[SN]$/ // Apenas 'S' ou 'N'
+                    }
+                },
+                messages: {
+                    marca_veiculo: {
+                        required: "Campo Marca é obrigatório.",
+                        minlength: "A Marca deve ter pelo menos 2 caracteres."
+                    },
+                    placa_veiculo: {
+                        required: "Campo Placa é obrigatório.",
+                        minlength: "A Placa deve ter 7 caracteres.",
+                        maxlength: "A Placa deve ter 7 caracteres."
+                    },
+                    modelo_veiculo: {
+                        required: "Campo Modelo é obrigatório.",
+                        minlength: "O Modelo deve ter pelo menos 2 caracteres."
+                    },
+                    numero_chaci_veiculo: {
+                        required: "Campo Número do Chassi é obrigatório.",
+                        minlength: "O Número do Chassi deve ter 17 caracteres.",
+                        maxlength: "O Número do Chassi deve ter 17 caracteres."
+                    },
+                    tipo_veiculo: {
+                        required: "Campo Tipo é obrigatório.",
+                        minlength: "O Tipo deve ter pelo menos 2 caracteres."
+                    },
+                    cor_veiculo: {
+                        required: "Campo Cor é obrigatório.",
+                        minlength: "A Cor deve ter pelo menos 2 caracteres."
+                    },
+                    capacidade_veiculo: {
+                        required: "Campo Capacidade é obrigatório.",
+                    },
+                    porta_mala_veiculo: {
+                        required: "Campo Porta-Mala é obrigatório."
+                    },
+                    km_atual: {
+                        required: "Campo Km Atual é obrigatório.",
+                        number: "Somente números são permitidos no campo Km Atual."
+                    },
+                    alugado_veiculo: {
+                        required: "Campo Alugado é obrigatório.",
+                        pattern: "Digite apenas 'S' ou 'N'."
+                    }
+                }
+            });
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 

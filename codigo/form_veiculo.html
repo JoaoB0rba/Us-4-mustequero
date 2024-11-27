@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,17 +19,17 @@
         <form id="veiculo" action="inserir_veiculo.php" method="get" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="marca" class="form-label">Marca:</label>
-                <input type="text" class="form-control" id="marca" name="marca_veiculo" required>
+                <input type="text" class="form-control" id="marca" name="marca_veiculo" required maxlength="45">
             </div>
 
             <div class="mb-3">
                 <label for="placa" class="form-label">Placa:</label>
-                <input type="text" class="form-control" id="placa" name="placa_veiculo" required maxlength="7">
+                <input type="text" class="form-control" id="placa" name="placa_veiculo" required maxlength="7" minlength="7">
             </div>
 
             <div class="mb-3">
                 <label for="modelo" class="form-label">Modelo:</label>
-                <input type="text" class="form-control" id="modelo" name="modelo_veiculo" required>
+                <input type="text" class="form-control" id="modelo" name="modelo_veiculo" required maxlength="45">
             </div>
 
             <div class="mb-3">
@@ -39,27 +39,27 @@
 
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo de Veículo:</label>
-                <input type="text" class="form-control" id="tipo" name="tipo_veiculo" required>
+                <input type="text" class="form-control" id="tipo" name="tipo_veiculo" required maxlength="45">
             </div>
 
             <div class="mb-3">
                 <label for="cor" class="form-label">Cor:</label>
-                <input type="text" class="form-control" id="cor" name="cor_veiculo" required>
+                <input type="text" class="form-control" id="cor" name="cor_veiculo" required maxlength="45">
             </div>
 
             <div class="mb-3">
                 <label for="capacidade" class="form-label">Capacidade:</label>
-                <input type="text" class="form-control" id="capacidade" name="capacidade_veiculo" required>
+                <input type="text" class="form-control" id="capacidade" name="capacidade_veiculo" required number="true" maxlength="45">
             </div>
 
             <div class="mb-3">
                 <label for="portamala" class="form-label">Porta-Mala:</label>
-                <input type="text" class="form-control" id="portamala" name="porta_mala" required>
+                <input type="text" class="form-control" id="portamala" name="porta_mala" required maxlength="45">
             </div>
 
             <div class="mb-3">
                 <label for="kmatual" class="form-label">Km Atual:</label>
-                <input type="text" class="form-control" id="kmatual" name="km_atual" required>
+                <input type="text" class="form-control" id="kmatual" name="km_atual" required number="true" maxlength="45">
             </div>
 
             <input type="hidden" name="alugado_veiculo" value="N">
@@ -79,7 +79,7 @@
                 rules: {
                     marca: {
                         required: true,
-                        minlength: 2,
+                        maxlength: 45,
                     },
                     placa: {
                         required: true,
@@ -88,72 +88,74 @@
                     },
                     modelo: {
                         required: true,
-                        minlength: 2,
+                        maxlength: 45,
                     },
                     numerodochaci: {
                         required: true,
                         minlength: 17,
-                        
+                        maxlength: 17,
                     },
                     tipo: {
                         required: true,
-                        minlength: 2,
+                        maxlength: 45,
                     },
                     cor: {
                         required: true,
-                        minlength: 2
+                        maxlength: 45,
                     },
                     capacidade: {
                         required: true,
-                        number: true
+                        maxlength: 45,
                     },
                     portamala: {
                         required: true,
-                       
+                        maxlength: 45,
                     },
                     kmatual: {
                         required: true,
-                        number: true
+                        number: true,
+                        maxlength: 45,
                     }
                 },
                 messages: {
                     marca: {
                         required: "Campo Marca é obrigatório.",
-                        minlength: "A Marca deve ter pelo menos 2 caracteres."
+                        maxlength: "O nome da Marca deve ter no máximo 45 caracteres.",
                     },
                     placa: {
                         required: "Campo Placa é obrigatório.",
                         minlength: "Campo Placa deve ter 7 caracteres.",
-                        maxlength: "Campo Placa deve ter 7 caracteres."
+                        maxlength: "Campo Placa deve ter 7 caracteres.",
                     },
                     modelo: {
                         required: "Campo Modelo é obrigatório.",
-                        minlength: "Campo Modelo deve ter pelo menos 2 caracteres."
+                        maxlength: "Campo Modelo deve ter no máximo 45 caracteres.",
                     },
                     numerodochaci: {
                         required: "Campo Número de Chassi é obrigatório.",
-                        minlength: "Campo Número de Chassi deve ter 17 caracteres.",
-                       
+                        minlength: "O Número de Chassi deve ter 17 caracteres.",
+                        maxlength: "O Número de Chassi deve ter 17 caracteres.",
                     },
                     tipo: {
                         required: "Campo Tipo de Veículo é obrigatório.",
-                        minlength: "Campo Tipo de Veículo deve ter pelo menos 2 caracteres."
+                        maxlength: "Campo Tipo de Veículo deve ter no máximo 45 caracteres.",
                     },
                     cor: {
                         required: "Campo Cor é obrigatório.",
-                        minlength: "Campo Cor deve ter pelo menos 2 caracteres."
+                        maxlength: "Campo Cor deve ter no máximo 45 caracteres.",
                     },
                     capacidade: {
                         required: "Campo Capacidade é obrigatório.",
-                        number: "Somente números são permitidos para Capacidade."
+                        maxlength: "Campo Capacidade deve ter no máximo 45 caracteres.",
                     },
                     portamala: {
                         required: "Campo Porta-Mala é obrigatório.",
-                        
+                        maxlength: "Campo Porta-Mala deve ter no máximo 45 caracteres.",
                     },
                     kmatual: {
                         required: "Campo Km Atual é obrigatório.",
-                        number: "Somente números são permitidos para Km Atual."
+                        number: "Somente números são permitidos para Km Atual.",
+                        maxlength: "Campo Km Atual deve ter no máximo 45 caracteres.",
                     }
                 }
             });

@@ -59,8 +59,8 @@
                     },
                     telefone: {
                         required: true,
-                        minlength: 14, // Com a máscara, telefone deve ter 14 caracteres
-                        maxlength: 15, 
+                        minlength: 16, 
+                        maxlength: 16,
                     },
                     cpf: {
                         required: true,
@@ -81,8 +81,9 @@
                     },
                     telefone: {
                         required: "Campo telefone é obrigatório.",
-                        minlength: "O telefone deve ter pelo menos 14 caracteres.",
-                        maxlength: "Máximo 15 caracteres.",
+                        minlength: "O telefone deve ter pelo menos 16 caracteres.",
+                        maxlength: "Máximo 16 caracteres.",
+                        remote: "Número de telefone inválido." // Mensagem caso a validação remota falhe
                     },
                     cpf: {
                         required: "Campo CPF é obrigatório.",
