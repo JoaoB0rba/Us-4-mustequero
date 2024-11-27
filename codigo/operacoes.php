@@ -540,16 +540,70 @@ function deletar_veiculo_aluguel($conexao, $idaluguel, $idveiculo) {
 }
 
 function listarPessoaFisica($conexao) {
-    $query = "SELECT idtb_pessoa_fisica, nome_pessoa, cpf_pessoa, data_nascimento FROM tb_pessoa_fisica";
+    $query = "SELECT 
+                 tb_pessoa_fisica.idpessoa_fisica AS idtb_pessoa_fisica,
+                 tb_pessoa_fisica.cpf AS cpf_pessoa,
+                 tb_pessoa_fisica.cnh,
+                 tb_pessoas.nome AS nome_pessoa,
+                 tb_pessoas.telefone 
+              FROM tb_pessoa_fisica
+              INNER JOIN tb_pessoas 
+              ON tb_pessoa_fisica.tb_pessoas_idpessoas = tb_pessoas.idpessoas
+              WHERE tb_pessoas.tipo = 'pf'"; // Garante que apenas pessoas físicas sejam retornadas
+
+    // Executa a consulta SQL
     $result = mysqli_query($conexao, $query);
 
+    // Inicializa o array para armazenar os resultados
     $pessoasFisicas = [];
+
+    // Verifica se a consulta retornou resultados
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
+            // Adiciona os resultados ao array
             $pessoasFisicas[] = $row;
         }
     }
+    
+    // Retorna o array com as pessoas físicas encontradas
     return $pessoasFisicas;
 }
+
+
+function listarPessoaJuridica($conexao) {
+    // Query para buscar os dados das pessoas jurídicas
+    $query = "SELECT 
+                 tb_pessoa_juridica.idpessoa_juridica AS idtb_pessoa_juridica,
+                 tb_pessoa_juridica.cnpj AS cnpj_pessoa,
+                 tb_pessoas.nome AS nome_pessoa,
+                 tb_pessoas.telefone
+              FROM tb_pessoa_juridica
+              INNER JOIN tb_pessoas 
+              ON tb_pessoa_juridica.tb_pessoas_idpessoas = tb_pessoas.idpessoas
+              WHERE tb_pessoas.tipo = 'pj'"; // Garante que apenas pessoas jurídicas sejam retornadas
+
+    // Executa a consulta SQL
+    $result = mysqli_query($conexao, $query);
+
+    // Inicializa o array para armazenar os resultados
+    $pessoasJuridicas = [];
+
+    // Verifica se a consulta retornou resultados
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Adiciona os resultados ao array
+            $pessoasJuridicas[] = $row;
+        }
+    }
+    
+    // Retorna o array com as pessoas jurídicas encontradas
+    return $pessoasJuridicas;
+}
+
+
+
+
+
+
 
 ?>
