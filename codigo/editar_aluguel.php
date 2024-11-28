@@ -47,6 +47,8 @@ if (isset($_GET['idtb_aluguel'])) {
             </div>
             
             <button type="submit" class="btn btn-danger">Atualizar</button>
+            <a href="pesquisar_aluguel.php" class="btn btn-secondary">Voltar</a>
+
         </form>
     </div>
 

@@ -85,6 +85,7 @@ if (isset($_GET['idtb_veiculo'])) {
             </div>
             
             <button type="submit" class="btn btn-danger">Atualizar</button>
+            <a href="pesquisar_veiculo.php" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
 

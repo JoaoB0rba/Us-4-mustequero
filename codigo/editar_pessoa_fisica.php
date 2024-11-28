@@ -54,6 +54,8 @@ if (isset($_GET['idpessoa_fisica'])) {
             </div>
             
             <button type="submit" class="btn btn-success">Atualizar</button>
+            <a href="pesquisar_pessoa_fisica.php" class="btn btn-secondary">Voltar</a>
+
         </form>
     </div>
 

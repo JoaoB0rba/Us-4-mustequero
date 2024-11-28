@@ -76,7 +76,7 @@
     <!-- Botões de Ações -->
     <div class="d-flex justify-content-between mt-4">
         <a href="pdf_pessoafi.php" class="btn btn-secondary">Gerar PDF</a>
-        <a href="telainicial.html" class="btn btn-secondary">Voltar</a>
+        <a href="telainicial.html" class="btn btn-secondary">pagina inicial</a>
     </div>
 
     <!-- Bootstrap JS -->

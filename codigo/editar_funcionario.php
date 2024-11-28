@@ -50,6 +50,8 @@ if (isset($_GET['idtb_funcionario'])) {
             </div>
             
             <button type="submit" class="btn btn-success">Atualizar</button>
+            <a href="pesquisar_vendedor.php" class="btn btn-secondary">Voltar</a>
+
         </form>
     </div>
 
