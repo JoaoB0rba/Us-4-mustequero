@@ -228,33 +228,76 @@ function efetuarPagamento($conexao, $tipo, $preco_pagamento, $valor_valorkm, $tb
 
 // UPDATE emprestimo_has_veiculo SET km_final = 50000 WHERE idemprestimo = 1 AND idveiculo = 1;
 
-function atualiza_km_final($conexao, $km_final, $idemprestimo, $idveiculo) {
-    $sql = "UPDATE tb_aluguel_has_tb_veiculo SET kmfinal = ? WHERE idtb_veiculo = ? AND idveiculo = ?";
+function atualiza_km_final_has($conexao, $km_final, $idemprestimo, $idveiculo) {
+    // Ajuste da consulta SQL com os nomes corretos das colunas
+    $sql = "UPDATE tb_aluguel_has_tb_veiculo SET kmfinal = ? WHERE tb_veiculo_idtb_veiculo = ? AND tb_aluguel_idtb_aluguel = ?";
+    
     $stmt = mysqli_prepare($conexao, $sql);
+    
+    if ($stmt === false) {
+        die("Erro ao preparar a consulta: " . mysqli_error($conexao));
+    }
 
-    mysqli_stmt_bind_param($stmt, "dii", $km_final, $idemprestimo, $idveiculo);
-    mysqli_stmt_execute($stmt);
+    // Bind dos parâmetros
+    mysqli_stmt_bind_param($stmt, "dii", $km_final, $idveiculo, $idemprestimo);
 
+    // Executa a query
+    $executou = mysqli_stmt_execute($stmt);
+
+    if (!$executou) {
+        die("Erro ao atualizar km final: " . mysqli_stmt_error($stmt));
+    }
+
+    // Fecha a declaração
     mysqli_stmt_close($stmt);
 
+    // Chama a função para atualizar o km atual do veículo
     atualiza_km_atual($conexao, $km_final, $idveiculo);
 }
 
+
+
 // UPDATE veiculo SET km_atual = 999 WHERE idveiculo = 3;
+// function atualiza_km_atual($conexao, $km_atual, $idveiculo) {
+//     $sql = "UPDATE tb_veiculo SET km_atual = ? WHERE idtb_veiculo = ?";
+//     $stmt = mysqli_prepare($conexao, $sql);
+
+//     mysqli_stmt_bind_param($stmt, "ii", $km_atual, $idveiculo);
+//     mysqli_stmt_execute($stmt);
+
+//     if (mysqli_stmt_error($stmt)) {
+//         // Adicione uma verificação de erro
+//         die("Erro ao atualizar km: " . mysqli_stmt_error($stmt));
+//     }
+
+//     mysqli_stmt_close($stmt);
+// }
+
 function atualiza_km_atual($conexao, $km_atual, $idveiculo) {
+    // Prepara a query para atualizar o km_atual do veículo
     $sql = "UPDATE tb_veiculo SET km_atual = ? WHERE idtb_veiculo = ?";
     $stmt = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ii", $km_atual, $idveiculo);
-    mysqli_stmt_execute($stmt);
+    if ($stmt === false) {
+        // Verifica se ocorreu algum erro ao preparar a consulta
+        die("Erro ao preparar a consulta: " . mysqli_error($conexao));
+    }
 
-    if (mysqli_stmt_error($stmt)) {
-        // Adicione uma verificação de erro
+    // Bind dos parâmetros para a consulta
+    mysqli_stmt_bind_param($stmt, "di", $km_atual, $idveiculo);
+
+    // Executa a query
+    $executou = mysqli_stmt_execute($stmt);
+
+    if (!$executou) {
+        // Verifica se ocorreu algum erro na execução da consulta
         die("Erro ao atualizar km: " . mysqli_stmt_error($stmt));
     }
 
+    // Fecha a declaração
     mysqli_stmt_close($stmt);
 }
+
 
 
 function salvarEmprestimo($conexao, $idfuncionario, $idcliente) {   

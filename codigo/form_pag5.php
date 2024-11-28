@@ -12,7 +12,11 @@ session_start();
 
     // Atualiza a quilometragem atual do veículo (passando cada veículo individualmente)
     foreach ($kmFinal as $idVeiculo => $kmFinalValue) {
-        atualiza_km_atual($conexao, $kmFinalValue, $idVeiculo);  // Atualiza o KM final do veículo
+        // Atualiza o KM final do veículo
+        atualiza_km_atual($conexao, $kmFinalValue, $idVeiculo);  
+        
+        // Atualiza a quilometragem final no relacionamento entre aluguel e veículo
+        atualiza_km_final_has($conexao, $kmFinalValue, $idaluguel, $idVeiculo);
     }
 
     // Efetua o pagamento
