@@ -58,13 +58,13 @@ CREATE TABLE IF NOT EXISTS `bancoveiculos`.`tb_aluguel` (
   CONSTRAINT `fk_tb_aluguel_tb_funcionario1`
     FOREIGN KEY (`tb_funcionario_idtb_funcionario`)
     REFERENCES `bancoveiculos`.`tb_funcionario` (`idtb_funcionario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_aluguel_tb_pessoas1`
     FOREIGN KEY (`tb_pessoas_idpessoas`)
     REFERENCES `bancoveiculos`.`tb_pessoas` (`idpessoas`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -82,8 +82,8 @@ CREATE TABLE IF NOT EXISTS `bancoveiculos`.`tb_pagamento` (
   CONSTRAINT `fk_tb_pagamento_tb_aluguel1`
     FOREIGN KEY (`tb_aluguel_idtb_aluguel`)
     REFERENCES `bancoveiculos`.`tb_aluguel` (`idtb_aluguel`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -155,14 +155,14 @@ CREATE TABLE IF NOT EXISTS `bancoveiculos`.`tb_aluguel_has_tb_veiculo` (
   CONSTRAINT `fk_tb_aluguel_has_tb_veiculo_tb_aluguel1`
     FOREIGN KEY (`tb_aluguel_idtb_aluguel`)
     REFERENCES `bancoveiculos`.`tb_aluguel` (`idtb_aluguel`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_aluguel_has_tb_veiculo_tb_veiculo1`
     FOREIGN KEY (`tb_veiculo_idtb_veiculo`)
     REFERENCES `bancoveiculos`.`tb_veiculo` (`idtb_veiculo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
